@@ -33,6 +33,7 @@ function App() {
     script.src = "https://static.elfsight.com/platform/platform.js";
     script.async = true;
     document.body.appendChild(script);
+    
 
     return () => {
       document.body.removeChild(script);
