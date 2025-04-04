@@ -35,7 +35,16 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
   return (
     <Box
       ref={componentRef}
-      sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '20px', backgroundColor: '#EDC7A2', gap: '100px', overflow: 'hidden' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: '20px',
+        backgroundColor: '#bfdbfe',
+        background: 'url("/src/assets/background/About_Us.png") center bottom no-repeat, #EDC7A2',
+        gap: '100px',
+        overflow: 'hidden',
+      }}
     >
       {/* Image on the left */}
       <Box

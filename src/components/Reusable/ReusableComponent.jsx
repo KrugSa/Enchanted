@@ -34,7 +34,18 @@ const ReusableComponent = ({ title, subtitle, description, description2, footert
   return (
     <Box
       ref={componentRef}
-      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '40px', backgroundColor: '#00ABA9', gap: '100px', overflow: 'hidden' }}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '40px',
+        backgroundColor: '#bfdbfe',
+        background: 'url("/src/assets/background/land-transition.png") center bottom no-repeat, #00ABA9',
+        backgroundSize: 'contain',
+        width: '100%',
+        gap: '100px',
+        overflow: 'hidden',
+      }}
     >
       <Box
         sx={{

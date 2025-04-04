@@ -4,12 +4,13 @@ import { useTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBarMobileComponent from './components/NavBar/NavBarMobileComponent';
 import NavBarComponent from './components/NavBar/NavBarComponent';
-import ReusableComponent from './components/ReusableComponent/ReusableComponent';
-import MobileReusableComponent from './components/ReusableComponent/MobileReusableComponent'; // Import MobileReusableComponent
+import ReusableComponent from './components/Reusable/ReusableComponent';
+import MobileReusableComponent from './components/Reusable/MobileReusableComponent'; // Import MobileReusableComponent
 // import {Content } from './pages/Content';
 import { About_Us } from './pages/About_Us';
-import ReusableComponentLeft from './components/ReusableComponent/ReusableComponentLeft';
+import ReusableComponentLeft from './components/Reusable/ReusableComponentLeft';
 import Footer from './components/Footer/Footer';
+import GoogleComponente from './components/Google/GoogleComponente';
 // import {Help } from './pages/Help';
 
 
@@ -120,10 +121,7 @@ function App() {
                       ]} // Pass listDetails to ReusableComponentLeft
                       onButtonClick={() => alert('Explorar clicked!')}
                     />
-                    {/* Elfsight Google Maps | Google Maps Enchanted */}
-                    {/* <script src="https://static.elfsight.com/platform/platform.js" async></script>
-                    <div className="elfsight-app-4e46faa0-a8fb-4c63-aefc-f839f515877c" data-elfsight-app-lazy></div> */}
-                    {/* <!-- Elfsight Google Reviews | Enchanted Google Reviews --> */}
+                    <GoogleComponente/>
                     <Box
                       sx={{
                         backgroundImage: 'url(/src/assets/background/Testimonios.png)', // Replace with your image path
@@ -137,12 +135,12 @@ function App() {
                     >
                       <div className="elfsight-app-bbe628f3-d5c2-4856-870a-217c267a3cdb" data-elfsight-app-lazy></div>
                     </Box>
-                    <Box sx={{height:'729px'}}>
+                    <Box sx={{height:'auto'}}>
                        <div className="elfsight-app-217791fa-8b93-4793-904c-6cfc03b48f0d" data-elfsight-app-lazy></div>
                     </Box>
                    
                     <div className="elfsight-app-2046cf87-be90-407c-81e8-6fad00a7b6a9" data-elfsight-app-lazy></div>
-                      <Footer/>
+                    <Footer/>
                   </Box>
                 </>
               )}

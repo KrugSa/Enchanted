@@ -5,7 +5,7 @@ const Footer = () => {
         <Box sx={{
             backgroundColor: '#0076B0',
             padding: '60px 0',
-            overflowX: 'auto', // Permitir desplazamiento horizontal si es necesario
+            overflowX: 'hidden', // Ocultar el desbordamiento horizontal
             whiteSpace: 'nowrap', // Asegurar que los elementos no se envuelvan
             '@keyframes slide': {
                 from: { transform: 'translateX(0)' },
@@ -15,21 +15,21 @@ const Footer = () => {
                 animationPlayState: 'paused'
             }
         }}>
-            <Box sx={{ display: 'inline-block', animation: '5s slide infinite linear' }}>
+            <Box sx={{ display: 'inline-block', animation: '30s slide infinite linear' }}>
                 <img src="/src/assets/logo_banner/Capa_1.svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (1).svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (2).svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group.svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/pincel_encantado-logo.svg" alt="" style={{ margin: '0 40px' }} />
             </Box>
-            <Box sx={{ display: 'inline-block', animation: '5s slide infinite linear' }}>
+            <Box sx={{ display: 'inline-block', animation: '30s slide infinite linear' }}>
                 <img src="/src/assets/logo_banner/Capa_1.svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (1).svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (2).svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group.svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/pincel_encantado-logo.svg" alt="" style={{ margin: '0 40px' }} />
             </Box>
-            <Box sx={{ display: 'inline-block', animation: '5s slide infinite linear' }}>
+            <Box sx={{ display: 'inline-block', animation: '30s slide infinite linear' }}>
                 <img src="/src/assets/logo_banner/Capa_1.svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (1).svg" alt="" style={{ margin: '0 40px' }} />
                 <img src="/src/assets/logo_banner/Group (2).svg" alt="" style={{ margin: '0 40px' }} />
