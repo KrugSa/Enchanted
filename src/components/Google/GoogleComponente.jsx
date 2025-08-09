@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Box, Typography } from '@mui/material';
 
 const GoogleComponente = () => {
+  const [mapInteractive, setMapInteractive] = useState(false);
+
+  const enableMap = () => {
+    setMapInteractive(true);
+  };
+
   return (
     <Box
       sx={{
         display: 'flex',
-        height: '550px',
+        height: '650px',
         overflow: 'hidden', // Prevent overflow
       }}
     >
@@ -14,22 +20,31 @@ const GoogleComponente = () => {
       <Box
         sx={{
           flex: 1,
-          backgroundColor: 'white',
+          backgroundImage: 'url("src/assets/background/Barco_Fondo.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'flex-start', // Align content to the left
+          alignItems: 'flex-start',
           padding: 3,
           textAlign: 'start',
-          gap: '32px',
+          gap: '35px',
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
           Galapagos Tours
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          Lorem ipsum dolor sit amet consectetur. Sit at lorem ut mi. Maecenas a id ultrices aliquet leo. Dictum sed nulla feugiat tellus mi. Lacus enim nisi non nisl proin nullam. Nunc elit non at iaculis nunc consequat sit et duis. Interdum turpis neque vitae molestie rhoncus.
-        </Typography>
+        <Box sx={{ marginBottom: '150px' }}>
+          <Typography variant="body1" gutterBottom sx={{ color: 'white' }}>
+            We are passionate about the Galapagos Islands and we love sharing it with you. 
+            We are more than a tour company that takes you to the common sightseeing spots; 
+            Enchanted Island Tour Operator provides impeccable, first class itineraries and 
+            real action-packed experiences focused on discovering the most hidden gems and 
+            the most beautiful places of these islands that not only enchanted Darwin.
+          </Typography>
+        </Box>
         <Button
           variant="contained"
           sx={{
@@ -40,7 +55,7 @@ const GoogleComponente = () => {
             borderRadius: '25px',
             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.25)',
             '&:hover': {
-              backgroundColor: 'darkorange'
+              backgroundColor: 'darkorange',
             },
           }}
         >
@@ -52,14 +67,14 @@ const GoogleComponente = () => {
       <Box
         sx={{
           flex: 1,
-          backgroundColor: '#f0f0f0', // Optional background color
+          position: 'relative',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          overflow: 'hidden', // Prevent overflow
+          overflow: 'hidden',
         }}
       >
-        {/* Elfsight Google Maps | Google Maps Enchanted */}
+        {/* Google Maps */}
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <Box
           sx={{
@@ -67,6 +82,7 @@ const GoogleComponente = () => {
             height: '100%',
             maxWidth: '100%',
             maxHeight: '100%',
+            pointerEvents: mapInteractive ? 'auto' : 'none', // Solo interactúa si activamos
           }}
         >
           <div
@@ -78,6 +94,32 @@ const GoogleComponente = () => {
             }}
           ></div>
         </Box>
+
+        {/* Overlay */}
+        {!mapInteractive && (
+          <Box
+            onClick={enableMap}
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              color: 'white',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              backdropFilter: 'blur(2px)',
+              transition: '0.3s ease',
+              '&:hover': {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+              },
+            }}
+          >
+            Click to interact with the map
+          </Box>
+        )}
       </Box>
     </Box>
   );

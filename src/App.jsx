@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { Box, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBarMobileComponent from './components/NavBar/NavBarMobileComponent';
@@ -11,6 +11,7 @@ import { About_Us } from './pages/About_Us';
 import ReusableComponentLeft from './components/Reusable/ReusableComponentLeft';
 import Footer from './components/Footer/Footer';
 import GoogleComponente from './components/Google/GoogleComponente';
+import TransitionSection from './components/Transition/Transition';
 // import {Help } from './pages/Help';
 
 
@@ -34,7 +35,7 @@ function App() {
     script.src = "https://static.elfsight.com/platform/platform.js";
     script.async = true;
     document.body.appendChild(script);
-    
+
 
     return () => {
       document.body.removeChild(script);
@@ -96,7 +97,7 @@ function App() {
               ) : (
                 <>
                   {/* Render ReusableComponent for desktop screens */}
-                  <Box sx={{ marginTop: '497px' }}>
+                  <Box sx={{ marginTop: '300px' }}>
                     <ReusableComponent
                       title="Enchanted Islands"
                       subtitle="Galapagos & Mainland Tour Operator"
@@ -121,26 +122,87 @@ function App() {
                       ]} // Pass listDetails to ReusableComponentLeft
                       onButtonClick={() => alert('Explorar clicked!')}
                     />
-                    <GoogleComponente/>
+                    <GoogleComponente />
                     <Box
                       sx={{
                         backgroundImage: 'url(/src/assets/background/Testimonios.png)', // Replace with your image path
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        backgroundAttachment: 'fixed',
+                        // backgroundAttachment: 'fixed',
                         backgroundPosition: 'center',
                         height: 'auto',
-                        padding: '20px', // Optional padding
+                        padding: '20px',
                       }}
                     >
                       <div className="elfsight-app-bbe628f3-d5c2-4856-870a-217c267a3cdb" data-elfsight-app-lazy></div>
                     </Box>
-                    <Box sx={{height:'auto'}}>
-                       <div className="elfsight-app-217791fa-8b93-4793-904c-6cfc03b48f0d" data-elfsight-app-lazy></div>
+                    {/* Instagram testimonies */}
+                    <div className="elfsight-app-217791fa-8b93-4793-904c-6cfc03b48f0d" data-elfsight-app-lazy></div>
+                    <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#b1e2ee', height: '200px' }}>
+                      <img src="src/assets/logo/logo-icon.png" alt="Logo" />
                     </Box>
-                   
+                    <Box
+                      sx={
+                        {
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(3, 1fr)',
+                          gap: '20px',
+                          justifyContent: 'space-around',
+                          padding: '0 20px',
+                          background: 'url(/themes/custom/galapagos/images/footer/xwater,P20transition,P20bot.png.pagespeed.ic.6A3psLPuQJ.webp) center bottom no-repeat, #b1e2ee',
+                          backgroundSize: 'contain',
+                          height: '250px',
+                          alignContent: 'center',
+                          justifyItems: 'center',
+                          alignItems: 'center'
+                        }
+                      }>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '25px' }}>
+                        <img src="src/assets/icons/localization-icon.svg" alt="Logo" style={{ width: '50px', height: '50px' }} />
+                        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                          <Typography variant="h6" sx={{ color: '#000', fontWeight: 'bold' }}>Galápagos, Ecuador.</Typography>
+                          <Typography variant="h6" sx={{ color: '#000' }}>Santa Cruz, Cucuve e Islas Plaza</Typography>
+                        </Box>
+                      </Box>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '25px', alignItems: 'center' }}>
+                        <img src="src/assets/icons/phone.svg" alt="Logo" style={{ width: '50px', height: '50px' }} />
+                        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                          <Typography variant="h6" sx={{ color: '#000', fontWeight: 'bold' }}>sales@enchantedislandsec.com</Typography>
+                          <Typography variant="h6" sx={{ color: '#000' }}>operations@enchantedislandsec.com</Typography>
+                          <Typography variant="h6" sx={{ color: '#000' }}>+593 99 919 7218</Typography>
+                        </Box>
+                      </Box>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '25px' }}>
+                        <img src="src/assets/icons/facebook.svg" alt="Logo" style={{ width: '50px', height: '50px' }} />
+                        <img src="src/assets/icons/instagram.svg" alt="Logo" style={{ width: '50px', height: '50px' }} />
+                        <img src="src/assets/icons/tiktok.svg" alt="Logo" style={{ width: '50px', height: '50px' }} />
+                      </Box>
+
+                    </Box>
                     <div className="elfsight-app-2046cf87-be90-407c-81e8-6fad00a7b6a9" data-elfsight-app-lazy></div>
-                    <Footer/>
+                    <TransitionSection image="src/assets/background/water_transition_bot.svg" backgroundColor='#b1e2ee' height={80} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0076B0', height: '200px' }}>
+                      <Typography variant="h2" sx={{ color: 'white', fontWeight: 'bold' }}>PARTNERS</Typography>
+                      {/* <img src="src/assets/logo/logo-icon.png" alt="Logo" /> */}
+                    </Box>
+                    <Footer />
+                    <Box sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      backgroundColor: '#003c6a',
+                      height: '83px',
+                      padding: '0 40px'
+                    }}>
+                      <Typography variant="h8" sx={{ color: 'white' }}>Enchanted Islands Tour Operator SAS © 2025. Todos los Derechos Reservados </Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
+                        <Typography variant="h8" sx={{ color: 'white' }}>Contact |</Typography>
+                        <Typography variant="h8" sx={{ color: 'white' }}>Frequent Questions |</Typography>
+                        <Typography variant="h8" sx={{ color: 'white' }}>Support</Typography>
+                      </Box>
+                    </Box>
                   </Box>
                 </>
               )}
@@ -152,7 +214,7 @@ function App() {
         {/* <Route path="/Help" element={<Help/>} /> */}
         {/* Add other routes here */}
       </Routes>
-    </Router>
+    </Router >
   );
 }
 

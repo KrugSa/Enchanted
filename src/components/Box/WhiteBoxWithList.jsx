@@ -6,21 +6,38 @@ const WhiteBoxWithList = ({ title, details }) => {
   return (
     <Box
       sx={{
-        width: '600px',
-        backgroundColor: 'white',
-        padding: '40px',
+        width: '700px',
+        backgroundColor: 'transparent', 
         borderRadius: '8px',
-        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
         '@keyframes fadeIn': {
           from: { opacity: 0, transform: 'translateY(20px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
         opacity: 0,
         transform: 'translateY(20px)',
-        animation: `fadeIn 1.2s ease forwards`, // Apply animation to the entire Box
+        animation: `fadeIn 1.2s ease forwards`, 
       }}
     >
-      <Typography
+      <Box
+        sx={{
+          backgroundColor: '#06aab0',
+          color: '#fff',
+          padding: '10px 20px',
+          borderRadius: '25px',
+          fontSize: '18px',
+          fontWeight: 600,
+          cursor: 'default',
+          boxShadow: '0 4px 8px rgba(0, 123, 255, .4)',
+          userSelect: 'text',
+          width: '100%',
+          textAlign: 'center',
+        }}
+      >
+      <Typography variant="h5" gutterBottom>
+        {title}
+      </Typography>
+    </Box>
+      {/* <Typography
         variant="h5"
         gutterBottom
         sx={{
@@ -32,34 +49,34 @@ const WhiteBoxWithList = ({ title, details }) => {
         }}
       >
         {title}
-      </Typography>
-      <List sx={{ padding: 0 }}>
-        {details.map((detail, index) => (
-          <ListItem
-            key={index}
-            sx={{
-              padding: '2px 0',
-              alignItems: 'center',
-              opacity: 0,
-              transform: 'translateY(20px)',
-              animation: `fadeIn 1.2s ease ${index * 0.3 + 0.6}s forwards`, // Staggered animation for list items
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: '20px',
-                display: 'flex',
-                alignItems: 'center', // Center the icon vertically
-                justifyContent: 'center', // Center the icon horizontally
-              }}
-            >
-              <CircleIcon sx={{ fontSize: '6px' }} />
-            </ListItemIcon>
-            <ListItemText primary={detail} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+      </Typography> */}
+  <List sx={{ padding: 0 }}>
+    {details.map((detail, index) => (
+      <ListItem
+        key={index}
+        sx={{
+          padding: '2px 0',
+          alignItems: 'center',
+          opacity: 0,
+          transform: 'translateY(20px)',
+          animation: `fadeIn 1.2s ease ${index * 0.3 + 0.6}s forwards`, // Staggered animation for list items
+        }}
+      >
+        <ListItemIcon
+          sx={{
+            minWidth: '20px',
+            display: 'flex',
+            alignItems: 'center', // Center the icon vertically
+            justifyContent: 'center', // Center the icon horizontally
+          }}
+        >
+          <CircleIcon sx={{ fontSize: '6px' }} />
+        </ListItemIcon>
+        <ListItemText primary={detail} />
+      </ListItem>
+    ))}
+  </List>
+    </Box >
   );
 };
 

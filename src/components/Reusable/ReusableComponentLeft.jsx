@@ -40,10 +40,12 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
         flexDirection: 'row',
         alignItems: 'center',
         padding: '20px',
-        backgroundColor: '#bfdbfe',
         background: 'url("/src/assets/background/About_Us.png") center bottom no-repeat, #EDC7A2',
+        backgroundSize: 'cover',
+        width: '100%',
         gap: '100px',
         overflow: 'hidden',
+        minHeight: '600px',
       }}
     >
       {/* Image on the left */}
@@ -65,7 +67,8 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
           paddingLeft: '20px',
           opacity: showText ? 1 : 0,
           transform: showText ? 'translateX(0)' : 'translateX(50px)',
-          transition: 'opacity 0.8s ease, transform 0.8s ease', // Increased duration
+          transition: 'opacity 0.8s ease, transform 0.8s ease', 
+          height: '800px',
         }}
       >
         <Typography
@@ -74,11 +77,30 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
           sx={{
             opacity: showText ? 1 : 0,
             transform: showText ? 'translateX(0)' : 'translateX(50px)',
-            transition: 'opacity 1.2s ease, transform 1.2s ease', // Increased duration
+            transition: 'opacity 1.2s ease, transform 1.2s ease',
           }}
         >
-          {title}
+          <Box
+            sx={{
+              display: 'inline-block',
+              backgroundColor: '#14936f',
+              color: '#fff',
+              padding: '25px 60px',
+              borderRadius: '25px',
+              fontSize: '40px',
+              fontWeight: 600,
+              cursor: 'default',
+              boxShadow: '0 6px 12px rgba(20, 147, 111, .6)',
+              userSelect: 'text',
+              marginBottom: '15px',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+            }}
+          >
+            {title}
+          </Box>
         </Typography>
+
         <Typography
           variant="h6"
           gutterBottom
