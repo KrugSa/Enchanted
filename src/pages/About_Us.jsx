@@ -1,13 +1,15 @@
-import React from 'react';
 import { Box } from '@mui/material';
 import NavBarComponent from '../components/NavBar/NavBarComponent';
-import  {BannerBackground, BannerTitle } from '../components/Banner/Banner_background';
+import { BannerBackground, BannerTitle } from '../components/Banner/Banner_background';
 import GreenLine from '../components/Green_Line/Green_line';
-
+import Reusable_About_Us from '../components/Reusable/Reusable_About_Us';
+import FooterSection from '../components/Footer/FooterSection';
+import Teammember from '../components/Team/Teammember';
+import TransitionSection from '../components/Transition/Transition';
 
 export function About_Us() {
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative', height: '100vh' }}>
       {/* NavBar con zIndex menor */}
       <Box sx={{ position: 'relative', zIndex: 5 }}>
         <NavBarComponent />
@@ -37,11 +39,20 @@ export function About_Us() {
         {/* Resto del contenido */}
       </Box>
 
-      {/* Contenido principal con padding para no quedar debajo del banner */}
-      <Box sx={{ paddingTop: '420px', paddingX: 3 }}>
-        <h1>About Us</h1>
-        <p>Welcome to our company! We are dedicated to providing the best services to our customers.</p>
-      </Box>
+      <Reusable_About_Us
+        title="Enchanted Islands"
+        subtitle="Galapagos & Mainland Tour Operator"
+        description="We are more than a tour company that takes you to the usual sightseeing spots; Our itineraries are personalized, unique and focused on discovering the most hidden gems and the most beautiful places of these islands, which not only enchanted Darwin.
+                      We create tailor-made programs that make logistical sense for individual passengers, families or groups according to their interests and needs. We translate our deep experience of the corners of this beautiful and enigmatic Archipelago into programs full of surprises and active adventures for curious travelers."
+        footertext="Our flagship product is comfortable and enriching travel experiences!"
+        buttonText="Learn More"
+        imageUrl="src/assets/logo/logo-horz-color_white.png"
+        onButtonClick={() => alert('Explorar clicked!')} />
+      <Teammember />
+      <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />
+      <FooterSection sx={{ marginTop: '500px' }} />
+
     </Box>
+
   );
 }
