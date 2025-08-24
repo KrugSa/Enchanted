@@ -15,10 +15,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 const pages = [
   { name: 'HOME', path: '/' },
   { name: 'ABOUT US', path: '/About_Us' },
-  { name: 'GALAPAGOS TOURS', path: '/content' },
+  { name: 'GALAPAGOS TOURS', path: '/galapagos_tours' },
   { name: 'DIVING', path: '/help' },
   { name: 'GALAPAGOS CRUISES', path: '/galapagos' },
-  { name: 'OUR BLOG', path: '/bloc' },
+  { name: 'OUR BLOG', path: '/blog' },
 ];
 
 const contactPage = { name: 'CONTACT US', path: '/help' };

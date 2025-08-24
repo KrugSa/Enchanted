@@ -1,5 +1,5 @@
-import React, { useEffect, Suspense, lazy } from 'react';
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { useEffect, Suspense } from 'react';
+import { Box, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBarMobileComponent from './components/NavBar/NavBarMobileComponent';
@@ -14,6 +14,7 @@ import GoogleComponente from './components/Google/GoogleComponente';
 import TransitionSection from './components/Transition/Transition';
 import FooterSection from './components/Footer/FooterSection';
 import NewsSection from './components/Blog/NewsSection';
+import { Galapagos_Tours } from './pages/Galapagos_Tours';
 // import {Help } from './pages/Help';
 
 
@@ -140,7 +141,10 @@ function App() {
                     </Box>
                     <NewsSection />
                     {/* Instagram testimonies */}
-                    <div className="elfsight-app-217791fa-8b93-4793-904c-6cfc03b48f0d" data-elfsight-app-lazy></div>
+                    <Box sx={{height: '850px'}}>
+                        <div className="elfsight-app-217791fa-8b93-4793-904c-6cfc03b48f0d" data-elfsight-app-lazy></div>
+                    </Box>
+                    
                     
                     <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />
                     <FooterSection />
@@ -151,7 +155,7 @@ function App() {
           </Box>
         } />
         <Route path="/About_Us" element={<About_Us />} />
-        {/* <Route path="/Content" element={<Content/>} /> */}
+        <Route path="/Galapagos_Tours" element={<Galapagos_Tours />} />
         {/* <Route path="/Help" element={<Help/>} /> */}
         {/* Add other routes here */}
       </Routes>

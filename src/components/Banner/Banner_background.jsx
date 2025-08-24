@@ -30,11 +30,11 @@ const BannerBackground = ({ imageUrl, alt = 'Banner', children }) => {
 
 const BannerTitle = ({ title, subtitle }) => {
   return (
-    <Box sx={{ maxWidth: 600 }}>
+    <Box sx={{ maxWidth: 700 }}>
       <Typography
         variant="h2"
         component="h1"
-        sx={{ fontWeight: 'bold', textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}
+        sx={{ fontWeight: 'bold', textShadow: '2px 2px 8px rgba(0,0,0,0.7)', textTransform: 'uppercase' }}
       >
         {title}
       </Typography>

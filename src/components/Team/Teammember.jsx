@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 
 const teamMembers = [
   {
-    name: 'Andrea Hinojosa',
+    name: 'Andrea',
     imgSrc: 'src/assets/img/Daniela.png',
     alt: 'team-1',
     description: `My name is Andrea, and i really have the best job in the world; I make
@@ -19,7 +19,7 @@ const teamMembers = [
       so much to offer!!'`
   },
   {
-    name: 'Daniela GomezJurado Zamora',
+    name: 'Daniela',
     imgSrc: 'src/assets/img/Daniela.png',
     alt: 'team-2',
     description: `I am a passionate professional in Graphic Design and Art. I have a
@@ -40,7 +40,7 @@ const teamMembers = [
       dynamic market.`
   },
   {
-    name: 'Lorem ipsum dolor sit amet consectetur. Lacus nunc.',
+    name: 'Text',
     imgSrc: 'src/assets/img/Daniela.png',
     alt: 'team-3',
     description: `Soy una profesional apasionada por el Diseño Gráfico y el Arte. Cuento
@@ -52,7 +52,7 @@ const teamMembers = [
       artístico.`
   },
   {
-    name: 'Lorem ipsum dolor sit amet consectetur. Lacus nunc.',
+    name: 'Text',
     imgSrc: 'src/assets/img/Daniela.png',
     alt: 'team-4',
     description: `Soy una profesional apasionada por el Diseño Gráfico y el Arte. Cuento
