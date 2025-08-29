@@ -15,6 +15,7 @@ import TransitionSection from './components/Transition/Transition';
 import FooterSection from './components/Footer/FooterSection';
 import NewsSection from './components/Blog/NewsSection';
 import { Galapagos_Tours } from './pages/Galapagos_Tours';
+import { Contact_Us } from './pages/Contact_Us';
 // import {Help } from './pages/Help';
 
 
@@ -156,6 +157,7 @@ function App() {
         } />
         <Route path="/About_Us" element={<About_Us />} />
         <Route path="/Galapagos_Tours" element={<Galapagos_Tours />} />
+        <Route path="/Contact_Us" element={<Contact_Us />} />
         {/* <Route path="/Help" element={<Help/>} /> */}
         {/* Add other routes here */}
       </Routes>

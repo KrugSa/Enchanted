@@ -26,7 +26,7 @@ export function About_Us() {
           zIndex: 1,
         }}
       >
-        <BannerBackground imageUrl="src/assets/background/Banner_About_Us.png" alt="About Us Banner">
+        <BannerBackground imageUrl="public/assets/background/Vida_marina.jpg" alt="About Us Banner">
           <BannerTitle title="About Us" />
         </BannerBackground>
       </Box>

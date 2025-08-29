@@ -76,93 +76,118 @@ export function Galapagos_Tours() {
       <Box sx={{ paddingTop: '360px' }}>
         <GreenLine
           imageSrc="public/assets/icons/icon-boat.svg"
-          altText="love icon"
+          altText="boat Icon"
           titleText="Browse your favorite tour below"
         />
 
-        <Grid container spacing={4} sx={{ mt: 2 }}>
-          {/* Filtro de locación */}
-          <Grid item xs={12} md={3}>
-            <Box sx={{ background: "#fff", borderRadius: 2, p: 3, boxShadow: 2 }}>
-              <Typography variant="h6" sx={{ mb: 2 }}>Filter by Location</Typography>
-              <FormControl fullWidth>
-                <InputLabel id="location-filter-label">Location</InputLabel>
-                <Select
-                  labelId="location-filter-label"
-                  value={locationFilter}
-                  label="Location"
-                  onChange={e => setLocationFilter(e.target.value)}
-                >
-                  <MenuItem value="">All</MenuItem>
-                  {locations.map(loc => (
-                    <MenuItem key={loc} value={loc}>{loc}</MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Box>
-          </Grid>
+       <Box 
+  sx={{ 
+    display: "grid", 
+    gridTemplateColumns: { xs: "1fr", md: "300px 1fr" }, // filtro a la izquierda
+    gap: 3,
+    mt: 3
+  }}
+>
+  {/* Sidebar de filtros */}
+  <Box 
+    sx={{ 
+      background: "#fff", 
+      borderRadius: 2, 
+      p: 3, 
+      boxShadow: 2,
+      alignSelf: "start", // para que arranque arriba
+      height: "100%" // ocupará todo el alto del grid
+    }}
+  >
+    <Typography variant="h6" sx={{ mb: 2 }}>Filter by Location</Typography>
+    <FormControl fullWidth>
+      <InputLabel id="location-filter-label">Location</InputLabel>
+      <Select
+        labelId="location-filter-label"
+        value={locationFilter}
+        label="Location"
+        onChange={e => setLocationFilter(e.target.value)}
+      >
+        <MenuItem value="">All</MenuItem>
+        {locations.map(loc => (
+          <MenuItem key={loc} value={loc}>{loc}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  </Box>
 
-          {/* Cards de tours */}
-          <Grid item xs={12} md={9}>
-            {loading && <Typography>Loading tours...</Typography>}
-            {error && <Typography color="error">{error}</Typography>}
-            {!loading && !error && (
-              <Grid container spacing={3}>
-                {filteredTours.length > 0 ? (
-                  filteredTours.map((tour, idx) => (
-                    <Grid item xs={12} sm={6} md={4} key={tour.uuid || idx}>
-                      <Card sx={{ borderRadius: 3, boxShadow: 3, height: "100%", display: "flex", flexDirection: "column", width: "300px" }}>
-                        <Box
-                          sx={{
-                            width: "100%",
-                            height: 220,
-                            backgroundColor: "#e0e0e0",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            borderTopLeftRadius: 12,
-                            borderTopRightRadius: 12,
-                          }}
-                        >
-                          {images[tour.uuid] && images[tour.uuid][0] ? (
-                            <CardMedia
-                              component="img"
-                              image={images[tour.uuid][0].url}
-                              alt={tour.title}
-                              sx={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                              }}
-                            />
-                          ) : (
-                            <Box sx={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "#aaa" }}>
-                              No Image
-                            </Box>
-                          )}
-                        </Box>
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Typography variant="h6" gutterBottom>
-                            {tour.title || "Tour sin nombre"}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {tour.location || "Unknown location"}
-                          </Typography>
-                          {/* Puedes agregar más detalles aquí */}
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))
+  {/* Área de tours */}
+  <Box>
+    {loading && <Typography>Loading tours...</Typography>}
+    {error && <Typography color="error">{error}</Typography>}
+    {!loading && !error && (
+      <Box 
+        sx={{ 
+          display: "grid", 
+          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }, 
+          gap: 3 
+        }}
+      >
+        {filteredTours.length > 0 ? (
+          filteredTours.map((tour, idx) => (
+            <Card 
+              key={tour.uuid || idx} 
+              sx={{ 
+                borderRadius: 3, 
+                boxShadow: 3, 
+                display: "flex", 
+                flexDirection: "column" 
+              }}
+            >
+              {/* Imagen */}
+              <Box
+                sx={{
+                  width: "100%",
+                  height: 220,
+                  backgroundColor: "#e0e0e0",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                  borderTopLeftRadius: 12,
+                  borderTopRightRadius: 12,
+                }}
+              >
+                {images[tour.uuid] && images[tour.uuid][0] ? (
+                  <CardMedia
+                    component="img"
+                    image={images[tour.uuid][0].url}
+                    alt={tour.title}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
                 ) : (
-                  <Grid item xs={12}>
-                    <Typography>No tours found.</Typography>
-                  </Grid>
+                  <Typography sx={{ color: "#aaa" }}>No Image</Typography>
                 )}
-              </Grid>
-            )}
-          </Grid>
-        </Grid>
+              </Box>
+
+              {/* Contenido */}
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" gutterBottom>
+                  {tour.title || "Tour sin nombre"}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {tour.location || "Unknown location"}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <Typography>No tours found.</Typography>
+        )}
+      </Box>
+    )}
+  </Box>
+</Box>
+
       </Box>
 
       <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />

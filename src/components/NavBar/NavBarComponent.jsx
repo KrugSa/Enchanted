@@ -21,7 +21,7 @@ const pages = [
   { name: 'OUR BLOG', path: '/blog' },
 ];
 
-const contactPage = { name: 'CONTACT US', path: '/help' };
+const contactPage = { name: 'CONTACT US', path: '/Contact_Us' };
 
 function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
   const navigate = useNavigate();
