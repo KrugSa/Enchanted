@@ -92,11 +92,15 @@ function FooterSection() {
       <div className="elfsight-app-2046cf87-be90-407c-81e8-6fad00a7b6a9" data-elfsight-app-lazy></div>
 
       {/* Transición */}
-      <TransitionSection
-        image="src/assets/background/water_transition_bot.svg"
-        backgroundColor="#b1e2ee"
-        height={80}
-      />
+      <Box sx={{ width: '100%', overflow: 'hidden' }}>
+          <TransitionSection
+          image="src/assets/background/water_transition_bot.svg"
+          backgroundColor="#b1e2ee"
+          width={100}
+          height={77}
+        />
+      </Box>
+      
 
       {/* Partners */}
       <Box
@@ -105,7 +109,7 @@ function FooterSection() {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#0076B0',
-          height: '200px',
+          height: '100px',
         }}
       >
         <Typography variant="h2" sx={{ color: 'white', fontWeight: 'bold' }}>

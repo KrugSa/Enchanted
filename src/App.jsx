@@ -147,7 +147,7 @@ function App() {
                     
                     
                     <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />
-                    <FooterSection />
+                    <FooterSection sx={{ marginTop: '500px' }} />
                   </Box>
                 </>
               )}
