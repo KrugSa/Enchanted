@@ -30,7 +30,7 @@ export function Contact_Us() {
                 </BannerBackground>
             </Box>
 
-            <Box sx={{ paddingTop: '360px' }}>
+            <Box sx={{ paddingTop: '360px', marginBottom: '40px' }}>
                 <GreenLine
                     imageSrc="public/assets/icons/icon-boat.svg"
                     altText="boat Icon"
@@ -46,28 +46,51 @@ export function Contact_Us() {
                         paddingBottom: '40px',
                     }}
                 >
+                    {/* Imagen de contacto */}
+                    <Box sx={{ width: 500, height: 500, display: { xs: 'none', sm: 'block' }, alignItems: 'center' }}>
+                        <img
+                            src="public/assets/gifts/piquero.gif"
+                            alt="Contact Us"
+                            style={{ width: 500, height: 500, objectFit: 'contain' }}
+                        />
+                    </Box>
                     {/* Resto del contenido  */}
-                    <Paper elevation={3} sx={{ p: 4, maxWidth: 700, width: '100%', display: 'flex', gap: 4, alignItems: 'flex-start', background: "#fffbe9" }}>
-                        {/* Imagen de contacto */}
-                        <Box sx={{ minWidth: 120, display: { xs: 'none', sm: 'block' } }}>
-                            <img
-                                src="/themes/custom/galapagos/images/contact/icono-piquero.png"
-                                alt="Contact Us"
-                                style={{ width: 100, height: 100, objectFit: 'contain' }}
-                            />
-                        </Box>
+                    <Paper elevation={3} sx={{
+                        p: 4, maxWidth: 700, width: '100%', display: 'flex', gap: 4, alignItems: 'flex-start', background: 'url("src/assets/background/backgroundAbout.png") center bottom no-repeat',
+                        backgroundSize: 'cover', borderRadius: '20px'
+                    }}>
+
                         {/* Formulario */}
                         <Box component="form" sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                            <Typography variant="h5" sx={{ mb: 2, fontWeight: 700, color: "#3e3e3e" }}>
-                                Contact Us
-                            </Typography>
                             <TextField
                                 label="Full Name"
                                 name="nombre"
                                 required
                                 fullWidth
                                 variant="outlined"
-                                placeholder="Full Name"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: '#fff',
+                                        borderRadius: '20px',
+                                        '& fieldset': {
+                                            borderColor: '#fff',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                    },
+                                    '& label.MuiInputLabel-shrink': {
+                                        color: '#ea9b11',
+                                        top: '-12px', // Solo cuando sube (shrink)
+                                    },
+                                    '& .MuiOutlinedInput-input': {
+                                        color: '#ea9b11',
+                                    },
+                                    marginBottom: '10px',
+                                }}
                             />
                             <TextField
                                 label="Email"
@@ -76,9 +99,52 @@ export function Contact_Us() {
                                 required
                                 fullWidth
                                 variant="outlined"
-                                placeholder="Email"
-                            />
-                            <FormControl required fullWidth>
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: '#fff',
+                                        borderRadius: '20px',
+                                        '& fieldset': {
+                                            borderColor: '#fff',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                    },
+                                    '& label.MuiInputLabel-shrink': {
+                                        color: '#ea9b11',
+                                        top: '-12px', // Solo cuando sube (shrink)
+                                    },
+                                    '& .MuiOutlinedInput-input': {
+                                        color: '#ea9b11',
+                                    },
+                                    marginBottom: '10px',
+                                }} />
+                            <FormControl required fullWidth sx={{
+                                '& .MuiOutlinedInput-root': {
+                                    backgroundColor: '#fff',
+                                    borderRadius: '20px',
+                                    '& fieldset': {
+                                        borderColor: '#fff',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: '#ea9b11',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: '#ea9b11',
+                                    },
+                                },
+                                '& label.MuiInputLabel-shrink': {
+                                    color: '#ea9b11',
+                                    top: '-12px', // Solo cuando sube (shrink)
+                                },
+                                '& .MuiOutlinedInput-input': {
+                                    color: '#ea9b11',
+                                },
+                                marginBottom: '10px',
+                            }}>
                                 <InputLabel id="country-label">Select Country</InputLabel>
                                 <Select
                                     labelId="country-label"
@@ -94,24 +160,66 @@ export function Contact_Us() {
                                     <MenuItem value="AU">Australia</MenuItem>
                                 </Select>
                             </FormControl>
-                            <TextField
+                            <TextField sx={{
+                                '& .MuiOutlinedInput-root': {
+                                    backgroundColor: '#fff',
+                                    borderRadius: '20px',
+                                    '& fieldset': {
+                                        borderColor: '#fff',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: '#ea9b11',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: '#ea9b11',
+                                    },
+                                },
+                                '& label.MuiInputLabel-shrink': {
+                                    color: '#ea9b11',
+                                    top: '-12px', // Solo cuando sube (shrink)
+                                },
+                                '& .MuiOutlinedInput-input': {
+                                    color: '#ea9b11',
+                                },
+                                marginBottom: '10px',
+                            }}
                                 label="Phone"
                                 name="phone"
                                 required
                                 fullWidth
                                 variant="outlined"
-                                placeholder="Phone"
                             />
-                            <TextField
+                            <TextField sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: '#fff',
+                                        borderRadius: '20px',
+                                        '& fieldset': {
+                                            borderColor: '#fff',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#ea9b11',
+                                        },
+                                    },
+                                    '& label.MuiInputLabel-shrink': {
+                                        color: '#ea9b11',
+                                        top: '-12px', // Solo cuando sube (shrink)
+                                    },
+                                    '& .MuiOutlinedInput-input': {
+                                        color: '#ea9b11',
+                                    },
+                                    marginBottom: '10px',
+                                }}
                                 label="Message"
                                 name="mensaje"
                                 multiline
                                 minRows={4}
                                 fullWidth
                                 variant="outlined"
-                                placeholder="Message"
                             />
-                            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+                            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, backgroundColor: '#ea9b11', width: '100px' }}>
                                 Submit
                             </Button>
                         </Box>
@@ -119,7 +227,7 @@ export function Contact_Us() {
                 </Box>
             </Box>
 
-            <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />
+            <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={400} />
             <FooterSection sx={{ marginTop: '500px' }} />
         </Box>
     );
