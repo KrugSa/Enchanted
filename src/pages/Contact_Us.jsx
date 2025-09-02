@@ -25,8 +25,8 @@ export function Contact_Us() {
                     zIndex: 1,
                 }}
             >
-                <BannerBackground imageUrl="public/assets/background/Tortuga_Galapagos_Tours.jpg" alt="Galapagos Tours">
-                    <BannerTitle title="Galapagos Tours" sx={{ textTransform: 'uppercase' }} />
+                <BannerBackground imageUrl="public/assets/background/masha.jpg" alt="Galapagos Tours">
+                    <BannerTitle title="Contact Us" sx={{ textTransform: 'uppercase' }} />
                 </BannerBackground>
             </Box>
 

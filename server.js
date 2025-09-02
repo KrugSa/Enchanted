@@ -1,6 +1,7 @@
 import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
+import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
 
