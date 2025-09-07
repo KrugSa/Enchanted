@@ -32,7 +32,7 @@ function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Pantallas pequeñas
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md')); // Pantallas tipo tablet
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md')); // Pantallas grandes
+  // const isDesktop = useMediaQuery(theme.breakpoints.up('md')); // Pantallas grandes
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -59,7 +59,7 @@ function App() {
               {isMobile ? (
                 <>
                   {/* Render MobileReusableComponent below the slider */}
-                  <Box sx={{ marginTop: '310px' }}>
+                  <Box sx={{ marginTop: '410px' }}>
                     <MobileReusableComponent
                       title="Enchanted Islands"
                       subtitle="Galapagos & Mainland Tour Operator"
@@ -101,7 +101,7 @@ function App() {
               ) : (
                 <>
                   {/* Render ReusableComponent for desktop screens */}
-                  <Box sx={{ marginTop: '300px' }}>
+                  <Box sx={{ marginTop: '300px',paddingTop:'50px' }}>
                     <ReusableComponent
                       title="Enchanted Islands"
                       subtitle="Galapagos & Mainland Tour Operator"

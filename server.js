@@ -1,3 +1,4 @@
+
 import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
@@ -70,5 +71,40 @@ app.get("/api/draft_trips/:uuid/images", async (req, res) => {
 });
 
 
+
+
+// Endpoint para recibir datos de contacto y enviar correo
+app.post("/api/contact", async (req, res) => {
+  const { nombre, email, select_country, phone, mensaje } = req.body;
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_APP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: "Nuevo mensaje de contacto desde la web",
+      html: `
+        <h2>Nuevo mensaje de contacto</h2>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>País:</strong> ${select_country}</p>
+        <p><strong>Teléfono:</strong> ${phone}</p>
+        <p><strong>Mensaje:</strong><br/>${mensaje}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.json({ ok: true, message: "Mensaje enviado correctamente" });
+  } catch (error) {
+    console.error("Error enviando correo:", error);
+    res.status(500).json({ ok: false, error: "No se pudo enviar el mensaje" });
+  }
+});
 
 app.listen(3001, () => console.log("Proxy server running on port 3001"));

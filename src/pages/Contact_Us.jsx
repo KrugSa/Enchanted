@@ -1,4 +1,5 @@
-import { Box, Typography, Grid, Card, CardMedia, CardContent, FormControl, InputLabel, Select, MenuItem, Paper, TextField, Button } from "@mui/material";
+import { Box, Typography, Grid, Card, CardMedia, CardContent, FormControl, InputLabel, Select, MenuItem, Paper, TextField, Button, Snackbar, Alert } from "@mui/material";
+import { useState } from "react";
 import { BannerBackground, BannerTitle } from "../components/Banner/Banner_background";
 import GreenLine from "../components/Green_Line/Green_line";
 import TransitionSection from "../components/Transition/Transition";
@@ -7,8 +8,47 @@ import NavBarComponent from "../components/NavBar/NavBarComponent";
 
 
 export function Contact_Us() {
+    const [form, setForm] = useState({
+        nombre: "",
+        email: "",
+        select_country: "",
+        phone: "",
+        mensaje: ""
+    });
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form)
+            });
+            const data = await res.json();
+            if (data.ok) {
+                setSnackbar({ open: true, message: "¡Mensaje enviado correctamente!", severity: "success" });
+                setForm({ nombre: "", email: "", select_country: "", phone: "", mensaje: "" });
+            } else {
+                setSnackbar({ open: true, message: "Error al enviar el mensaje.", severity: "error" });
+            }
+        } catch {
+            setSnackbar({ open: true, message: "Error de red al enviar el mensaje.", severity: "error" });
+        }
+        setLoading(false);
+    };
     return (
         <Box sx={{ position: 'relative', minHeight: '100vh', background: "#f6e8d7" }}>
+            <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={() => setSnackbar({ ...snackbar, open: false })}>
+                <Alert severity={snackbar.severity} sx={{ width: '100%' }}>{snackbar.message}</Alert>
+            </Snackbar>
             {/* NavBar */}
             <Box sx={{ position: 'relative', zIndex: 5 }}>
                 <NavBarComponent />
@@ -61,13 +101,15 @@ export function Contact_Us() {
                     }}>
 
                         {/* Formulario */}
-                        <Box component="form" sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Box component="form" onSubmit={handleSubmit} sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
                             <TextField
                                 label="Full Name"
                                 name="nombre"
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={form.nombre}
+                                onChange={handleChange}
                                 sx={{
                                     '& .MuiOutlinedInput-root': {
                                         backgroundColor: '#fff',
@@ -99,6 +141,8 @@ export function Contact_Us() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={form.email}
+                                onChange={handleChange}
                                 sx={{
                                     '& .MuiOutlinedInput-root': {
                                         backgroundColor: '#fff',
@@ -149,7 +193,8 @@ export function Contact_Us() {
                                 <Select
                                     labelId="country-label"
                                     name="select_country"
-                                    defaultValue=""
+                                    value={form.select_country}
+                                    onChange={handleChange}
                                     label="Select Country"
                                 >
                                     <MenuItem value=""><em>- Select -</em></MenuItem>
@@ -188,6 +233,8 @@ export function Contact_Us() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                value={form.phone}
+                                onChange={handleChange}
                             />
                             <TextField sx={{
                                     '& .MuiOutlinedInput-root': {
@@ -218,9 +265,11 @@ export function Contact_Us() {
                                 minRows={4}
                                 fullWidth
                                 variant="outlined"
+                                value={form.mensaje}
+                                onChange={handleChange}
                             />
-                            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, backgroundColor: '#ea9b11', width: '100px' }}>
-                                Submit
+                            <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, backgroundColor: '#ea9b11', width: '100px' }} disabled={loading}>
+                                {loading ? "Enviando..." : "Submit"}
                             </Button>
                         </Box>
                     </Paper>
