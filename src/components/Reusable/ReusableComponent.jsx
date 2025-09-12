@@ -40,7 +40,7 @@ const ReusableComponent = ({ title, subtitle, description, description2, footert
         justifyContent: 'space-between',
         padding: '40px',
         backgroundColor: '#bfdbfe',
-        background: 'url("/src/assets/background/land-transition.png") center bottom no-repeat, #00ABA9',
+        background: 'url("public/assets/background/land-transition.png") bottom no-repeat, #00ABA9',
         backgroundSize: 'contain',
         width: '100%',
         gap: '100px',

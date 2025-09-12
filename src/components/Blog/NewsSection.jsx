@@ -11,43 +11,173 @@ const iconUrls = [
   'src/assets/icons/icono-pinguino.svg',
 ];
 
-const newsItems = [
-  {
-    title: 'Nueva ruta de turismo sostenible en Galápagos',
-    imgSrc: 'src/assets/blog/Santa_Cruz.png',
-    alt: 'news-1',
-    summary: `The Galapagos Archipelago is made up of 13 major islands and numerous smaller islands, islets and rocks.
-The four main inhabited islands in the Galapagos are Santa Cruz, San Cristobal, Isabela, and Floreana. These islands have permanent settlements and are home to the majority of the Galapagos' population.`,
-    date: '2025-07-01',
-    newsUrl: '/news/sostenible-galapagos',
-  },
-  {
-    title: 'Campaña de limpieza en playas de Santa Cruz',
-    imgSrc: 'src/assets/blog/pre-arrival.png',
-    alt: 'news-2',
-    summary: `Voluntarios y organizaciones se unen en una campaña para limpiar las playas más visitadas de Santa Cruz, mejorando así el entorno natural y la experiencia de los visitantes.`,
-    date: '2025-06-15',
-    newsUrl: '/news/limpieza-santa-cruz',
-  },
-  {
-    title: 'Innovación en transporte ecológico para tours',
-    imgSrc: 'src/assets/blog/cueva.jpg',
-    alt: 'news-3',
-    summary: `Las compañías de tours en Galápagos están adoptando vehículos eléctricos y embarcaciones solares para reducir la huella de carbono y proteger el ecosistema.`,
-    date: '2025-05-20',
-    newsUrl: '/news/transporte-ecologico',
-  },
-  {
-    title: 'Nueva exhibición en el museo de ciencias naturales',
-    imgSrc: 'src/assets/blog/playa.jpg',
-    alt: 'news-4',
-    summary: `El Museo de Ciencias Naturales de Galápagos inaugura una exposición interactiva sobre la evolución de las especies en las islas.`,
-    date: '2025-04-10',
-    newsUrl: '/news/exhibicion-museo',
-  },
-];
+import { newsItems } from '../../services/newsData';
 
-function NewsItem({ title, imgSrc, alt, summary, date, newsUrl, color, iconSrc }) {
+import { useNavigate } from 'react-router-dom';
+
+function NewsItem({ id, title, summary, imgSrc, alt, newsUrl, color, iconSrc, images }) {
+  const navigate = useNavigate();
+  const hasCarousel = images && images.length > 1;
+  const [current, setCurrent] = React.useState(0);
+  const displayImg = hasCarousel ? images[current] : imgSrc;
+  const handlePrev = () => setCurrent(current === 0 ? images.length - 1 : current - 1);
+  const handleNext = () => setCurrent(current === images.length - 1 ? 0 : current + 1);
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        px: 3,
+        py: 4,
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        borderRadius: 3,
+        backgroundColor: color,
+        color: 'white',
+        height: 600,
+        boxSizing: 'border-box',
+        position: 'relative',
+      }}
+    >
+      <Typography
+        variant="h5"
+        component="h3"
+        sx={{ fontWeight: 'bold', mb: 2, width: '100%', textAlign: 'left' }}
+      >
+        {title}
+      </Typography>
+      {/* Contenedor imagen + Read more pegado abajo izquierda */}
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: 250,
+          height: 250,
+          mb: 4,
+          borderRadius: 3,
+          overflow: 'hidden',
+          textAlign: 'left',
+        }}
+      >
+        <Box
+          component="img"
+          src={displayImg}
+          alt={alt}
+          loading="lazy"
+          sx={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: 3,
+          }}
+          onError={e => {
+            e.target.onerror = null;
+            e.target.src = 'src/assets/blog/default.png';
+          }}
+        />
+        {hasCarousel && (
+          <>
+            <Button onClick={handlePrev} sx={{ position: 'absolute', left: 5, top: '50%', transform: 'translateY(-50%)', minWidth: 0, p: 1, zIndex: 2, color: 'white', background: 'rgba(0,0,0,0.2)' }}>&lt;</Button>
+            <Button onClick={handleNext} sx={{ position: 'absolute', right: 5, top: '50%', transform: 'translateY(-50%)', minWidth: 0, p: 1, zIndex: 2, color: 'white', background: 'rgba(0,0,0,0.2)' }}>&gt;</Button>
+          </>
+        )}
+        <Link
+          href={`/details/${id}`}
+          underline="hover"
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            color: '#fff',
+            fontWeight: 'bold',
+            bgcolor: 'rgba(0,0,0,0.4)',
+            px: 1,
+            py: 0.5,
+            borderBottomLeftRadius: 8,
+            borderTopRightRadius: 8,
+            cursor: 'pointer',
+          }}
+        >
+          Read more
+        </Link>
+      </Box>
+      {/* Contenedor texto + Read more */}
+      <Box sx={{ width: '100%', textAlign: 'left', mb: 3 }}>
+        <Typography
+          variant="body2"
+          sx={{
+            whiteSpace: 'pre-line',
+            fontSize: 14,
+            display: '-webkit-box',
+            WebkitLineClamp: 4,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {summary}
+        </Typography>
+        <Link
+          href={`/details/${id}`}
+          underline="hover"
+          sx={{ color: '#fff', fontWeight: 'bold', cursor: 'pointer', mt: 1, display: 'inline-block' }}
+        >
+          Read more
+        </Link>
+      </Box>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          gap: 2,
+          mt: 'auto',
+          pt: 2,
+        }}
+      >
+        <Box
+          component="img"
+          src={iconSrc}
+          alt="icono noticia"
+          sx={{
+            width: 60,
+            height: 60,
+            objectFit: 'contain',
+            mr: 2,
+            display: 'block',
+          }}
+        />
+        <Button
+          component="a"
+          href={`/details/${id}`}
+          variant="contained"
+          sx={{
+            backgroundColor: '#fff',
+            color: color,
+            fontWeight: 'bold',
+            textTransform: 'none',
+            fontSize: 13,
+            px: 2,
+            py: 0.5,
+            borderRadius: '8px',
+            width: 'auto',
+            minWidth: 80,
+            ml: 0,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          startIcon={<ArrowForwardIcon sx={{ color: color }} />}
+        >
+          Leer más
+        </Button>
+      </Box>
+    </Box>
+  );
   return (
     <Box
       sx={{
@@ -237,9 +367,16 @@ export default function NewsSection() {
         {newsItems.map((news, index) => (
           <NewsItem
             key={index}
-            {...news}
+            id={index}
+            title={news.title}
+            summary={news.summary || news.description}
+            imgSrc={news.imgSrc || (news.images && news.images[0])}
+            alt={news.alt || news.title}
+            newsUrl={news.newsUrl || `/details/${index}`}
+            date={news.date}
             color={colors[index % colors.length]}
             iconSrc={iconUrls[index % iconUrls.length]}
+            images={news.images}
           />
         ))}
       </Box>

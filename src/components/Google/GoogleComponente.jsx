@@ -12,14 +12,14 @@ const GoogleComponente = () => {
     <Box
       sx={{
         display: 'flex',
-        height: '650px',
-        overflow: 'hidden', // Prevent overflow
+        height: '490px',
+        overflow: 'hidden',
       }}
     >
       {/* Left Section */}
       <Box
         sx={{
-          flex: 1,
+          width: '50%',
           backgroundImage: 'url("src/assets/background/Barco_Fondo.png")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -36,7 +36,7 @@ const GoogleComponente = () => {
         <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
           Galapagos Tours
         </Typography>
-        <Box sx={{ marginBottom: '150px' }}>
+        <Box sx={{marginTop: '10px', marginBottom: '90px' }}>
           <Typography variant="body1" gutterBottom sx={{ color: 'white' }}>
             We are passionate about the Galapagos Islands and we love sharing it with you. 
             We are more than a tour company that takes you to the common sightseeing spots; 
@@ -66,7 +66,7 @@ const GoogleComponente = () => {
       {/* Right Section */}
       <Box
         sx={{
-          flex: 1,
+          width: '50%',
           position: 'relative',
           display: 'flex',
           justifyContent: 'center',
@@ -74,8 +74,16 @@ const GoogleComponente = () => {
           overflow: 'hidden',
         }}
       >
-        {/* Google Maps */}
-        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <img
+          src="public/assets/background/Mapa.jpg"
+          alt="Mapa"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+        {/* <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <Box
           sx={{
             width: '100%',
@@ -94,9 +102,10 @@ const GoogleComponente = () => {
             }}
           ></div>
         </Box>
+         */}
 
         {/* Overlay */}
-        {!mapInteractive && (
+        {/* {!mapInteractive && (
           <Box
             onClick={enableMap}
             sx={{
@@ -119,7 +128,7 @@ const GoogleComponente = () => {
           >
             Click to interact with the map
           </Box>
-        )}
+        )} */}
       </Box>
     </Box>
   );

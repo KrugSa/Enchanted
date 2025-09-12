@@ -16,8 +16,6 @@ const pages = [
   { name: 'HOME', path: '/' },
   { name: 'ABOUT US', path: '/About_Us' },
   { name: 'GALAPAGOS TOURS', path: '/galapagos_tours' },
-  { name: 'DIVING', path: '/help' },
-  { name: 'GALAPAGOS CRUISES', path: '/galapagos' },
   { name: 'OUR BLOG', path: '/blog' },
 ];
 
@@ -26,7 +24,7 @@ const contactPage = { name: 'CONTACT US', path: '/Contact_Us' };
 function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const isMobile = useMediaQuery('(max-width:960px)');
+  const isMobile = useMediaQuery('(max-width:600px)');
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleNavigation = (path) => {
@@ -36,41 +34,28 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
 
   return (
     <>
-      <AppBar
-        position="static"
-        sx={{
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
-          paddingY: '10px',
-          minHeight: '100px',
-        }}
-      >
-        <Container
-          maxWidth="xl"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
+  <AppBar position="static" sx={{ backgroundColor: isMobile ? 'transparent' : 'transparent', boxShadow: 'none', paddingY: isMobile ? 0 : '10px', minHeight: isMobile ? '48px' : '100px', position: isMobile ? 'relative' : 'static' }}>
+  <Container maxWidth="xl" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: isMobile ? 2 : undefined, position: 'relative', minHeight: isMobile ? '48px' : undefined }}>
           {/* Logo */}
           <Box
             component="img"
             src="src/assets/logo/Logo_New.png"
             alt="Logo"
             sx={{
-              width: logoWidth,
-              height: logoHeight,
+              width: isMobile ? '140px' : logoWidth,
+              height: isMobile ? 'auto' : logoHeight,
               cursor: 'pointer',
               zIndex: 1300,
+              position: isMobile ? 'absolute' : 'static',
+              top: isMobile ? '2px' : undefined,
+              left: isMobile ? '8px' : undefined,
+              marginTop: isMobile ? 0 : undefined
             }}
             onClick={() => navigate('/')}
           />
-
           {/* Desktop */}
           {!isMobile && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              {/* Fondo degradado para las páginas */}
               <Toolbar
                 sx={{
                   gap: 2,
@@ -123,8 +108,6 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
                   </Button>
                 ))}
               </Toolbar>
-
-              {/* Contact Us independiente */}
               <Button
                 onClick={() => handleNavigation(contactPage.path)}
                 sx={{
@@ -148,25 +131,27 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
               </Button>
             </Box>
           )}
-
           {/* Mobile */}
           {isMobile && (
-            <IconButton size="large" edge="end" color="inherit" onClick={() => setMenuOpen(true)}>
-              <MenuIcon
-                sx={{
-                  backgroundColor: '#EA9B11',
-                  borderRadius: 3,
-                  width: '45px',
-                  height: '45px',
-                  color: 'white',
-                }}
-              />
+            <IconButton
+              size="large"
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setMenuOpen(true)}
+              sx={{
+                position: 'absolute',
+                top: '2px',
+                right: '8px',
+                zIndex: 1400
+              }}
+            >
+              <MenuIcon sx={{ backgroundColor: '#EA9B11', borderRadius: 3, width: '36px', height: '36px', color: 'white' }} />
             </IconButton>
           )}
         </Container>
       </AppBar>
-
-      {/* Mobile Slide Menu */}
+      {/* Mobile Slide Menu adaptado */}
       <Slide direction="left" in={menuOpen} mountOnEnter unmountOnExit>
         <Box
           sx={{
@@ -181,49 +166,28 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            p: 2,
           }}
         >
-          <Box
-            component="img"
-            src="src/assets/logo/Logo_New.png"
+          <img
+            src="src/assets/logo/logo-horz-color.svg"
             alt="Logo"
-            sx={{ marginBottom: 4, width: '200px', cursor: 'pointer' }}
+            style={{ marginBottom: '20px', width: '200px' }}
             onClick={() => handleNavigation('/')}
           />
-
           {pages.map((page) => (
-            <Typography
+            <Box
               key={page.name}
-              variant="h5"
               onClick={() => handleNavigation(page.path)}
-              sx={{
-                color: 'white',
-                marginY: 1.5,
-                cursor: 'pointer',
-                fontWeight: 'bold',
-                userSelect: 'none',
-              }}
+              sx={{ display: 'flex', alignItems: 'center', margin: 2, cursor: 'pointer' }}
             >
-              {page.name}
-            </Typography>
+              <Typography variant="h6" sx={{ color: 'white' }}>
+                {page.name}
+              </Typography>
+            </Box>
           ))}
-
-          {/* Contact Us separado en mobile */}
           <Button
             onClick={() => handleNavigation(contactPage.path)}
-            sx={{
-              mt: 3,
-              backgroundColor: 'white',
-              color: '#EA9B11',
-              borderRadius: '50px',
-              px: 4,
-              py: 1,
-              fontWeight: 'bold',
-              fontSize: '16px',
-              boxShadow: '0px 4px 10px rgba(0,0,0,0.25)',
-              '&:hover': { backgroundColor: '#f5f5f5' },
-            }}
+            sx={{ mt: 3, backgroundColor: 'white', color: '#EA9B11', borderRadius: '50px', px: 4, py: 1, fontWeight: 'bold', fontSize: '16px', boxShadow: '0px 4px 10px rgba(0,0,0,0.25)', '&:hover': { backgroundColor: '#f5f5f5' } }}
           >
             {contactPage.name}
           </Button>

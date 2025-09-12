@@ -19,6 +19,7 @@ export function Galapagos_Tours() {
   useEffect(() => {
     getDraftTrips()
       .then(data => {
+        console.log('Respuesta de getDraftTrips:', data);
         const tourList = data.data || [];
         setTours(tourList);
         setLoading(false);

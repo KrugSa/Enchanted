@@ -38,14 +38,16 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
       sx={{
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
-        padding: '20px',
+        alignItems: 'stretch',
+        padding: '40px',
         background: 'url("/src/assets/background/About_Us.png") center bottom no-repeat, #EDC7A2',
         backgroundSize: 'cover',
         width: '100%',
-        gap: '100px',
+        gap: '60px',
         overflow: 'hidden',
-        minHeight: '600px',
+        minHeight: { xs: '500px', md: '800px' },
+        height: { xs: 'auto', md: '800px' },
+        marginTop: { xs: '-10px', md: '-20px' },
       }}
     >
       {/* Image on the left */}
@@ -53,12 +55,16 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
         sx={{
           flex: 1,
           textAlign: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           opacity: showImage ? 1 : 0,
           transform: showImage ? 'translateX(0)' : 'translateX(-50px)',
-          transition: 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s', // Added delay for image
+          transition: 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s',
+          height: '100%',
         }}
       >
-        <img src={imageUrl} alt={title} style={{ maxWidth: '100%', borderRadius: '8px' }} />
+    <img src={imageUrl} alt={title} style={{ width: '100%', maxWidth: '700px', maxHeight: '90%', borderRadius: '8px', objectFit: 'contain' }} />
       </Box>
       {/* Text and WhiteBoxWithList on the right */}
       <Box
@@ -67,8 +73,11 @@ function ReusableComponentLeft({ title, subtitle, description, description2, foo
           paddingLeft: '20px',
           opacity: showText ? 1 : 0,
           transform: showText ? 'translateX(0)' : 'translateX(50px)',
-          transition: 'opacity 0.8s ease, transform 0.8s ease', 
-          height: '800px',
+          transition: 'opacity 0.8s ease, transform 0.8s ease',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: '100%',
         }}
       >
         <Typography
