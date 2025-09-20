@@ -13,6 +13,7 @@ import NewsSection from './components/Blog/NewsSection';
 import { Galapagos_Tours } from './pages/Galapagos_Tours';
 import { Contact_Us } from './pages/Contact_Us';
 import Details from './pages/Details';
+import { TourDetails } from './pages/TourDetails';
 const scrollToSection = (id) => {
   const section = document.getElementById(id);
   if (section) {
@@ -98,9 +99,10 @@ function App() {
         <Route path="/About_Us" element={<About_Us />} />
         <Route path="/Galapagos_Tours" element={<Galapagos_Tours />} />
         <Route path="/Contact_Us" element={<Contact_Us />} />
+        <Route path="/tour/:uuid" element={<TourDetails />} />
         {/* <Route path="/Help" element={<Help/>} /> */}
         {/* Add other routes here */}
-  <Route path="/details/:id" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </Router >
   );

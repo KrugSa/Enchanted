@@ -46,7 +46,7 @@ export function About_Us() {
                       We create tailor-made programs that make logistical sense for individual passengers, families or groups according to their interests and needs. We translate our deep experience of the corners of this beautiful and enigmatic Archipelago into programs full of surprises and active adventures for curious travelers."
         footertext="Our flagship product is comfortable and enriching travel experiences!"
         buttonText="Learn More"
-        imageUrl="src/assets/logo/logo-horz-color_white.png"
+        imageUrl="public/assets/logo/Enchanted_logo.png"
         onButtonClick={() => alert('Explorar clicked!')} />
       <Teammember />
       <TransitionSection image="src/assets/background/footer-transition.png" backgroundColor='#f6e8d7' height={230} />

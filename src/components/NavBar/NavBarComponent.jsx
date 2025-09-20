@@ -62,7 +62,7 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
                   display: 'flex',
                   alignItems: 'center',
                   padding: '6px 20px',
-                  background: 'linear-gradient(90deg, #158a70 0%, #bcdc22 50%)',
+                  background: 'linear-gradient(90deg, #158a70 0%, #bcdc22 100%)',
                   borderRadius: '50px',
                   marginTop: '-200px',
                 }}
@@ -82,7 +82,7 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
                       overflow: 'hidden',
                       transition: '0.3s ease-in-out',
                       '&:hover': {
-                        color: '#EA9B11',
+                        color: '#1177AE',
                         backgroundColor: 'transparent',
                       },
                       '&::after': {
