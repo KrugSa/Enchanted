@@ -1,6 +1,14 @@
+
 import { Box, Typography } from '@mui/material';
 import Footer from './Footer';
 import TransitionSection from '../Transition/Transition';
+import logoIcon from '../../assets/logo/logo-icon.png';
+import localizationIcon from '../../assets/icons/localization-icon.svg';
+import phoneIcon from '../../assets/icons/phone.svg';
+import facebookIcon from '../../assets/icons/facebook.svg';
+import instagramIcon from '../../assets/icons/instagram.svg';
+import tiktokIcon from '../../assets/icons/tiktok.svg';
+import waterTransition from '../../assets/background/water_transition_bot.svg';
 
 function FooterSection() {
   return (
@@ -15,7 +23,7 @@ function FooterSection() {
           height: '200px',
         }}
       >
-        <img src="src/assets/logo/logo-icon.png" alt="Logo" />
+  <img src={logoIcon} alt="Logo" />
       </Box>
 
       {/* Información de contacto */}
@@ -38,7 +46,7 @@ function FooterSection() {
         {/* Dirección */}
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '25px' }}>
           <img
-            src="src/assets/icons/localization-icon.svg"
+            src={localizationIcon}
             alt="Localización"
             style={{ width: '50px', height: '50px' }}
           />
@@ -63,7 +71,7 @@ function FooterSection() {
           }}
         >
           <img
-            src="src/assets/icons/phone.svg"
+            src={phoneIcon}
             alt="Teléfono"
             style={{ width: '50px', height: '50px' }}
           />
@@ -82,9 +90,9 @@ function FooterSection() {
 
         {/* Redes sociales */}
         <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '25px' }}>
-          <img src="src/assets/icons/facebook.svg" alt="Facebook" style={{ width: '50px', height: '50px' }} />
-          <img src="src/assets/icons/instagram.svg" alt="Instagram" style={{ width: '50px', height: '50px' }} />
-          <img src="src/assets/icons/tiktok.svg" alt="TikTok" style={{ width: '50px', height: '50px' }} />
+          <img src={facebookIcon} alt="Facebook" style={{ width: '50px', height: '50px' }} />
+          <img src={instagramIcon} alt="Instagram" style={{ width: '50px', height: '50px' }} />
+          <img src={tiktokIcon} alt="TikTok" style={{ width: '50px', height: '50px' }} />
         </Box>
       </Box>
 
@@ -94,11 +102,11 @@ function FooterSection() {
       {/* Transición */}
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
           <TransitionSection
-          image="src/assets/background/water_transition_bot.svg"
-          backgroundColor="#b1e2ee"
-          width={100}
-          height={77}
-        />
+            image={waterTransition}
+            backgroundColor="#b1e2ee"
+            width={100}
+            height={77}
+          />
       </Box>
       
 

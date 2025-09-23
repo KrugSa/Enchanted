@@ -14,6 +14,7 @@ import { Galapagos_Tours } from './pages/Galapagos_Tours';
 import { Contact_Us } from './pages/Contact_Us';
 import Details from './pages/Details';
 import { TourDetails } from './pages/TourDetails';
+import { Our_Blog } from './pages/Our_Blog';
 const scrollToSection = (id) => {
   const section = document.getElementById(id);
   if (section) {
@@ -100,6 +101,7 @@ function App() {
         <Route path="/Galapagos_Tours" element={<Galapagos_Tours />} />
         <Route path="/Contact_Us" element={<Contact_Us />} />
         <Route path="/tour/:uuid" element={<TourDetails />} />
+        <Route path="/blog" element={<Our_Blog />} />
         {/* <Route path="/Help" element={<Help/>} /> */}
         {/* Add other routes here */}
         <Route path="/details/:id" element={<Details />} />

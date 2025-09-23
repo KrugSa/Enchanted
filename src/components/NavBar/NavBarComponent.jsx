@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logo/Logo_New.png';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -39,7 +40,7 @@ function NavBarComponent({ logoWidth = '200px', logoHeight = 'auto' }) {
           {/* Logo */}
           <Box
             component="img"
-            src="src/assets/logo/Logo_New.png"
+            src={logo}
             alt="Logo"
             sx={{
               width: isMobile ? '140px' : logoWidth,

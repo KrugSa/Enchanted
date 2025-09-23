@@ -1,5 +1,24 @@
+
 import React from 'react';
 import { Box } from '@mui/material';
+
+// Utilidad para importar imágenes si se pasa string relativa
+function getImageSrc(image) {
+  if (typeof image === 'string') {
+    try {
+      // Solo si es una ruta relativa dentro de src/assets
+      if (image.startsWith('src/assets/')) {
+        return require(`../../${image.replace('src/', '')}`);
+      }
+      if (image.startsWith('public/')) {
+        return `/${image.replace('public/', '')}`;
+      }
+    } catch (e) {
+      return image;
+    }
+  }
+  return image;
+}
 
 const TransitionSection = ({ image, height = 150,  backgroundColor = 'transparent' }) => {
   return (
@@ -15,7 +34,7 @@ const TransitionSection = ({ image, height = 150,  backgroundColor = 'transparen
     >
       <Box
         component="img"
-        src={image}
+        src={getImageSrc(image)}
         alt="transition"
         sx={{
           width: '100%',
