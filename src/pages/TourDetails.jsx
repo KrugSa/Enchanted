@@ -41,7 +41,7 @@ export function TourDetails() {
           getTripIncludedItems(uuid),
           getTripPackages(uuid)
         ]);
-        
+
         console.log('Paragraphs data:', paragraphsRes);
 
         setTourData(detailsRes?.data || detailsRes);
@@ -56,26 +56,26 @@ export function TourDetails() {
         setMainImage(processedImages[0]?.url || null);
 
         // Normalizar párrafos
-        const processedParagraphs = Array.isArray(paragraphsRes?.data) 
+        const processedParagraphs = Array.isArray(paragraphsRes?.data)
           ? paragraphsRes.data
-          : Array.isArray(paragraphsRes) 
-            ? paragraphsRes 
+          : Array.isArray(paragraphsRes)
+            ? paragraphsRes
             : [];
         setParagraphs(processedParagraphs);
 
         // Normalizar ítems incluidos
-        const processedIncludedItems = Array.isArray(includedItemsRes?.data) 
-          ? includedItemsRes.data 
-          : Array.isArray(includedItemsRes) 
-            ? includedItemsRes 
+        const processedIncludedItems = Array.isArray(includedItemsRes?.data)
+          ? includedItemsRes.data
+          : Array.isArray(includedItemsRes)
+            ? includedItemsRes
             : [];
         setIncludedItems(processedIncludedItems);
 
         // Normalizar paquetes
-        const processedPackages = Array.isArray(packagesRes?.data) 
-          ? packagesRes.data 
-          : Array.isArray(packagesRes) 
-            ? packagesRes 
+        const processedPackages = Array.isArray(packagesRes?.data)
+          ? packagesRes.data
+          : Array.isArray(packagesRes)
+            ? packagesRes
             : [];
         console.log('Paquetes procesados:', processedPackages);
         setPackages(processedPackages);
@@ -145,12 +145,12 @@ export function TourDetails() {
           <Container>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
               <Typography variant="h2" sx={{ color: 'white', mb: 2, flex: 1, minWidth: 200 }}>
-                
+
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                 {packages.length > 0 && packages[0].price && (
-                  <Box sx={{ 
-                    display: 'flex', 
+                  <Box sx={{
+                    display: 'flex',
                     flexDirection: 'column',
                     bgcolor: 'rgba(255,255,255,0.1)',
                     p: 2,
@@ -166,8 +166,8 @@ export function TourDetails() {
                   </Box>
                 )}
                 {packages.length > 0 && packages[0].participants_per_package && (
-                  <Box sx={{ 
-                    display: 'flex', 
+                  <Box sx={{
+                    display: 'flex',
                     flexDirection: 'column',
                     bgcolor: 'rgba(255,255,255,0.1)',
                     p: 2,
@@ -191,130 +191,146 @@ export function TourDetails() {
       {/* Contenido */}
       <Box sx={{ paddingTop: '320px' }}>
         <Container maxWidth="lg" sx={{ mb: 6 }}>
-          <Box sx={{display: 'flex', flexDirection: 'row', gap: 4, alignItems: 'flex-start'}}>
-
-            {/* Slider */}
-            <Grid item xs={12} md={6}>
-              {images.length > 0 && (
-                <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: 2, p: 2 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', height: 350 }}>
-                    {images.length > 1 && (
-                      <IconButton
-                        onClick={() => setSliderIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
-                        sx={{
-                          position: 'absolute',
-                          left: 16,
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          zIndex: 2,
-                          width: 48,
-                          height: 48,
-                          bgcolor: 'rgba(255,255,255,0.85)',
-                          border: '2px solid #e0e0e0',
-                          boxShadow: 1,
-                          color: '#1a365d',
-                          '&:hover': { bgcolor: '#f6e8d7' }
-                        }}
-                        aria-label="previous image"
-                      >
-                        <ArrowBackIosNewIcon fontSize="medium" />
-                      </IconButton>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, boxShadow: '0 4px 24px rgba(0,0,0,0.07)',  p: 3, borderRadius: 2, backgroundImage: 'url(/public/assets/background/right_col.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-start' }}>
+              <Container maxWidth="sm" sx={{ mb: 8 }}>
+                <Box sx={{ backgroundImage: 'url(/public/assets/background/right_col.svg)', p: 4, borderRadius: 2, boxShadow: 2, textAlign: 'center' }}>
+                  <Typography variant="h5" sx={{ mb: 3, color: 'white' }}>Book now and live an unforgettable experience!</Typography>
+                  <Typography>
+                    {packages.length > 0 && packages[0].price && (
+                      <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        // bgcolor: 'rgba(255,255,255,0.1)',
+                        p: 2,
+                        borderRadius: 2,
+                        // backdropFilter: 'blur(5px)'
+                      }}>
+                        <Typography variant="h4" sx={{ color: '#f47c20', fontWeight: 'bold' }}>
+                          ${packages[0].price}
+                        </Typography>
+                        <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.9 }}>
+                          Tour price
+                        </Typography>
+                      </Box>
                     )}
-                    <img
-                      src={images[sliderIndex]?.url}
-                      alt={images[sliderIndex]?.alt}
-                      style={{ maxHeight: 320, maxWidth: '100%', objectFit: 'contain', borderRadius: 8 }}
-                    />
-                    {images.length > 1 && (
-                      <IconButton
-                        onClick={() => setSliderIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
-                        sx={{
-                          position: 'absolute',
-                          right: 16,
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          zIndex: 2,
-                          width: 48,
-                          height: 48,
-                          bgcolor: 'rgba(255,255,255,0.85)',
-                          border: '2px solid #e0e0e0',
-                          boxShadow: 1,
-                          color: '#1a365d',
-                          '&:hover': { bgcolor: '#f6e8d7' }
-                        }}
-                        aria-label="next image"
-                      >
-                        <ArrowForwardIosIcon fontSize="medium" />
-                      </IconButton>
-                    )}
-                  </Box>
-                  {/* Galería de miniaturas */}
-                  {images.length > 1 && (
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 2 }}>
-                      {images.map((img, idx) => (
-                        <Box key={img.id} sx={{ position: 'relative' }}>
-                          <img
-                            src={img.url}
-                            alt={img.alt}
-                            style={{
-                              width: 60,
-                              height: 40,
-                              objectFit: 'cover',
-                              borderRadius: 4,
-                              border: idx === sliderIndex ? '2px solid #f47c20' : '2px solid #eee',
-                              cursor: 'pointer',
-                              opacity: idx === sliderIndex ? 1 : 0.7
-                            }}
-                            onClick={() => setSliderIndex(idx)}
-                          />
-                          {idx === sliderIndex && (
-                            <PhotoLibraryIcon sx={{ position: 'absolute', top: 2, right: 2, color: '#f47c20', fontSize: 18, bgcolor: 'white', borderRadius: '50%' }} />
-                          )}
-                        </Box>
-                      ))}
-                    </Box>
-                  )}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    sx={{
+                      mt: 2,
+                      bgcolor: '#f47c20',
+                      '&:hover': { bgcolor: '#e65100' }
+                    }}
+                    onClick={handleBookNow}
+                  >
+                    Book Now
+                  </Button>
                 </Box>
-              )}
-            </Grid>
-            <Container maxWidth="sm" sx={{ mb: 8 }}>
-          <Box sx={{ backgroundImage: 'url(/public/assets/background/right_col.svg)', p: 4, borderRadius: 2, boxShadow: 2, textAlign: 'center' }}>
-            <Typography variant="h5" sx={{ mb: 3, color: 'white' }}>Book now and live an unforgettable experience!</Typography>
-              <Typography>
-                {packages.length > 0 && packages[0].price && (
-                  <Box sx={{ 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    // bgcolor: 'rgba(255,255,255,0.1)',
-                    p: 2,
-                    borderRadius: 2,
-                    // backdropFilter: 'blur(5px)'
-                  }}>
-                    <Typography variant="h4" sx={{ color: '#f47c20', fontWeight: 'bold' }}>
-                      ${packages[0].price}
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.9 }}>
-                      Tour price
-                    </Typography>
+              </Container>
+
+              {/* Slider */}
+              <Grid item xs={12} md={6}>
+                {images.length > 0 && (
+                  <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: 2, p: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', height: 350 }}>
+                      {images.length > 1 && (
+                        <IconButton
+                          onClick={() => setSliderIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                          sx={{
+                            position: 'absolute',
+                            left: 16,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            zIndex: 2,
+                            width: 48,
+                            height: 48,
+                            bgcolor: 'rgba(255,255,255,0.85)',
+                            border: '2px solid #e0e0e0',
+                            boxShadow: 1,
+                            color: '#1a365d',
+                            '&:hover': { bgcolor: '#f6e8d7' }
+                          }}
+                          aria-label="previous image"
+                        >
+                          <ArrowBackIosNewIcon fontSize="medium" />
+                        </IconButton>
+                      )}
+                      <img
+                        src={images[sliderIndex]?.url}
+                        alt={images[sliderIndex]?.alt}
+                        style={{ maxHeight: 320, maxWidth: '100%', objectFit: 'contain', borderRadius: 8 }}
+                      />
+                      {images.length > 1 && (
+                        <IconButton
+                          onClick={() => setSliderIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                          sx={{
+                            position: 'absolute',
+                            right: 16,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            zIndex: 2,
+                            width: 48,
+                            height: 48,
+                            bgcolor: 'rgba(255,255,255,0.85)',
+                            border: '2px solid #e0e0e0',
+                            boxShadow: 1,
+                            color: '#1a365d',
+                            '&:hover': { bgcolor: '#f6e8d7' }
+                          }}
+                          aria-label="next image"
+                        >
+                          <ArrowForwardIosIcon fontSize="medium" />
+                        </IconButton>
+                      )}
+                    </Box>
+                    {/* Galería de miniaturas */}
+                    {images.length > 1 && (
+                      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 2 }}>
+                        {images.map((img, idx) => (
+                          <Box key={img.id} sx={{ position: 'relative' }}>
+                            <img
+                              src={img.url}
+                              alt={img.alt}
+                              style={{
+                                width: 60,
+                                height: 40,
+                                objectFit: 'cover',
+                                borderRadius: 4,
+                                border: idx === sliderIndex ? '2px solid #f47c20' : '2px solid #eee',
+                                cursor: 'pointer',
+                                opacity: idx === sliderIndex ? 1 : 0.7
+                              }}
+                              onClick={() => setSliderIndex(idx)}
+                            />
+                            {idx === sliderIndex && (
+                              <PhotoLibraryIcon sx={{ position: 'absolute', top: 2, right: 2, color: '#f47c20', fontSize: 18, bgcolor: 'white', borderRadius: '50%' }} />
+                            )}
+                          </Box>
+                        ))}
+                      </Box>
+                    )}
                   </Box>
                 )}
-              </Typography>
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{
-                mt: 2,
-                bgcolor: '#f47c20',
-                '&:hover': { bgcolor: '#e65100' }
-              }}
-              onClick={handleBookNow}
-            >
-              Book Now
-            </Button>
-          </Box>
-        </Container>
+              </Grid>
 
+            </Box>
+            <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img
+                src="/public/assets/icons/ferry1.svg"
+                alt="Boat"
+                style={{
+                  width: '100%',
+                  maxWidth: 500,
+                  borderRadius: 16,
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
+                  objectFit: 'cover'
+                }}
+              />
+            </Box>
           </Box>
+
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
 
 
@@ -322,12 +338,12 @@ export function TourDetails() {
             <Grid item xs={12} md={6}>
               <Box sx={{ bgcolor: 'white', p: 4, borderRadius: 2 }}>
                 <Typography variant="h4" sx={{ mb: 3, color: '#1a365d' }}>Tour Overview</Typography>
-                
+
                 {/* Detalles específicos del tour */}
                 <Grid container spacing={3} sx={{ mb: 4 }}>
                   <Grid item xs={12} md={6}>
-                    <Box sx={{ 
-                      p: 2, 
+                    <Box sx={{
+                      p: 2,
                       bgcolor: '#f7fafc',
                       borderRadius: 1,
                       border: '1px solid #e2e8f0'
@@ -341,8 +357,8 @@ export function TourDetails() {
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Box sx={{ 
-                      p: 2, 
+                    <Box sx={{
+                      p: 2,
                       bgcolor: '#f7fafc',
                       borderRadius: 1,
                       border: '1px solid #e2e8f0'
@@ -356,8 +372,8 @@ export function TourDetails() {
                     </Box>
                   </Grid>
                   <Grid item xs={12}>
-                    <Box sx={{ 
-                      p: 2, 
+                    <Box sx={{
+                      p: 2,
                       bgcolor: '#f7fafc',
                       borderRadius: 1,
                       border: '1px solid #e2e8f0'
@@ -378,9 +394,9 @@ export function TourDetails() {
                     <Divider sx={{ my: 4 }} />
                     <Typography variant="h5" sx={{ mb: 3 }}>About This Tour</Typography>
                     {paragraphs.map((paragraph, index) => (
-                      <Box 
-                        key={index} 
-                        sx={{ 
+                      <Box
+                        key={index}
+                        sx={{
                           mb: 4,
                           p: 3,
                           bgcolor: '#fff',
@@ -389,9 +405,9 @@ export function TourDetails() {
                         }}
                       >
                         {paragraph.title && (
-                          <Typography 
-                            variant="h6" 
-                            sx={{ 
+                          <Typography
+                            variant="h6"
+                            sx={{
                               mb: 2,
                               color: '#2c5282',
                               fontWeight: 600
@@ -402,7 +418,7 @@ export function TourDetails() {
                         )}
                         <Typography
                           variant="body1"
-                          sx={{ 
+                          sx={{
                             mb: 2,
                             lineHeight: 1.8,
                             color: '#2d3748'
@@ -465,7 +481,7 @@ export function TourDetails() {
                 </Grid>
               </Box>
             </Grid>
-            </Box>
+          </Box>
         </Container>
 
         {/* Paquetes del tour */}
@@ -476,9 +492,9 @@ export function TourDetails() {
               <Grid container spacing={3}>
                 {packages.map((pkg) => (
                   <Grid item xs={12} md={6} key={pkg.id}>
-                    <Box sx={{ 
-                      p: 3, 
-                      border: '1px solid #e2e8f0', 
+                    <Box sx={{
+                      p: 3,
+                      border: '1px solid #e2e8f0',
                       borderRadius: 2,
                       bgcolor: '#f7fafc',
                       height: '100%',
@@ -490,9 +506,9 @@ export function TourDetails() {
                         transform: 'translateY(-2px)'
                       }
                     }}>
-                      <Typography 
-                        variant="h6" 
-                        sx={{ 
+                      <Typography
+                        variant="h6"
+                        sx={{
                           color: '#2c5282',
                           mb: 2,
                           fontWeight: 600
@@ -500,7 +516,7 @@ export function TourDetails() {
                       >
                         {pkg.name}
                       </Typography>
-                      
+
                       <Grid container spacing={2} sx={{ mb: 2 }}>
                         <Grid item xs={6}>
                           <Box sx={{ mb: 2 }}>
@@ -525,20 +541,20 @@ export function TourDetails() {
                       </Grid>
 
                       {pkg.description && (
-                        <Typography 
-                          sx={{ 
+                        <Typography
+                          sx={{
                             mt: 'auto',
                             color: '#4a5568',
                             fontSize: '0.95rem',
                             lineHeight: 1.6
-                          }} 
+                          }}
                           dangerouslySetInnerHTML={{ __html: pkg.description }}
                         />
                       )}
 
                       {pkg.deposit > 0 && (
-                        <Typography 
-                          sx={{ 
+                        <Typography
+                          sx={{
                             mt: 2,
                             color: '#718096',
                             fontSize: '0.9rem'
@@ -556,7 +572,7 @@ export function TourDetails() {
         )}
 
         {/* Book section */}
-        
+
       </Box>
 
       <TransitionSection
