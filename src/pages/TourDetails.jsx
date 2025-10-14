@@ -152,15 +152,22 @@ export function TourDetails() {
                   <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: 'rgba(255,255,255,0.1)',
-                    p: 2,
-                    borderRadius: 2,
-                    backdropFilter: 'blur(5px)'
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: '#009e4f',
+                    p: 2.5,
+                    borderRadius: '50%',
+                    minWidth: 110,
+                    minHeight: 110,
+                    position: 'relative',
+                    boxShadow: '0 2px 12px rgba(0,0,0,0.10)',
                   }}>
-                    <Typography variant="h4" sx={{ color: '#f47c20', fontWeight: 'bold' }}>
+                    {/* Icono tortuga arriba */}
+                    <img src="/public/assets/icons/tortuga.svg" alt="Tortuga" style={{ position: 'absolute', top: -90, left: '50%', transform: 'translateX(-50%)', width: 200, height: 200, zIndex: 2 }} />
+                    <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold', mt: 3, textAlign: 'center', fontSize: 28 }}>
                       ${packages[0].price}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.9 }}>
+                    <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.95, fontWeight: 500, textAlign: 'center', fontSize: 16 }}>
                       per person
                     </Typography>
                   </Box>
@@ -169,15 +176,26 @@ export function TourDetails() {
                   <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    bgcolor: 'rgba(255,255,255,0.1)',
-                    p: 2,
-                    borderRadius: 2,
-                    backdropFilter: 'blur(5px)'
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: '#00b3c6',
+                    p: 2.5,
+                    borderRadius: '50%',
+                    width: 130,
+                    height: 130,
+                    minWidth: 130,
+                    minHeight: 130,
+                    maxWidth: 130,
+                    maxHeight: 130,
+                    position: 'relative',
+                    boxShadow: '0 2px 12px rgba(0,0,0,0.10)',
                   }}>
-                    <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold' }}>
-                      {packages[0].participants_per_package}
+                    {/* Icono iguana arriba */}
+                    <img src="/public/assets/icons/iguana.svg" alt="Iguana" style={{ position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)', width: 200, height: 200, zIndex: 2 }} />
+                    <Typography variant="h4" sx={{ color: 'white', fontWeight: 'bold', mt: 3, textAlign: 'center', fontSize: 22 }}>
+                      ${packages[0].participants_per_package}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.9 }}>
+                    <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.95, fontWeight: 500, textAlign: 'center', fontSize: 14 }}>
                       max participants
                     </Typography>
                   </Box>
@@ -189,287 +207,430 @@ export function TourDetails() {
       </Box>
 
       {/* Contenido */}
-      <Box sx={{ paddingTop: '320px' }}>
-        <Container maxWidth="lg" sx={{ mb: 6 }}>
-          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, boxShadow: '0 4px 24px rgba(0,0,0,0.07)',  p: 3, borderRadius: 2, backgroundImage: 'url(/public/assets/background/right_col.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '100%' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-start' }}>
-              <Container maxWidth="sm" sx={{ mb: 8 }}>
-                <Box sx={{ backgroundImage: 'url(/public/assets/background/right_col.svg)', p: 4, borderRadius: 2, boxShadow: 2, textAlign: 'center' }}>
-                  <Typography variant="h5" sx={{ mb: 3, color: 'white' }}>Book now and live an unforgettable experience!</Typography>
-                  <Typography>
-                    {packages.length > 0 && packages[0].price && (
-                      <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        // bgcolor: 'rgba(255,255,255,0.1)',
-                        p: 2,
-                        borderRadius: 2,
-                        // backdropFilter: 'blur(5px)'
-                      }}>
-                        <Typography variant="h4" sx={{ color: '#f47c20', fontWeight: 'bold' }}>
-                          ${packages[0].price}
-                        </Typography>
-                        <Typography variant="subtitle1" sx={{ color: 'white', opacity: 0.9 }}>
-                          Tour price
-                        </Typography>
-                      </Box>
-                    )}
+      <Box sx={{ width: '100%', paddingTop: '180px' }}>
+
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, p: 3, backgroundImage: 'url(/public/assets/background/fondoagua.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: '100%', width: '100%', height: '660px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-start' }}>
+            <Container maxWidth="sm" sx={{ mb: 8 }}>
+              <Box
+                sx={{
+                  width: '100%',
+                  maxWidth: 500,
+                  mx: 'auto',
+                  background: '#06629B',
+                  borderRadius: 3,
+                  boxShadow: 4,
+                  textAlign: 'center',
+                  p: 0,
+                  overflow: 'hidden',
+                  mb: 4,
+                  minHeight: 120,
+                }}
+              >
+                <Box sx={{ p: 2.5, pb: 2 }}>
+                  <Typography variant="h6" sx={{ color: 'white', mb: 1.5, fontWeight: 400, fontSize: 18 }}>
+                    Book now and live an unforgettable experience!
                   </Typography>
+                  {packages.length > 0 && packages[0].price && (
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 0.5 }}>
+                      <Typography
+                        variant="h2"
+                        sx={{
+                          color: 'white',
+                          fontWeight: 900,
+                          fontSize: 44,
+                          lineHeight: 1,
+                          mb: 0.2
+                        }}
+                      >
+                        ${packages[0].price}
+                      </Typography>
+                      <Typography variant="subtitle1" sx={{ color: 'white', fontSize: 15, opacity: 0.95 }}>
+                        Tour price
+                      </Typography>
+                    </Box>
+                  )}
+                </Box>
+                <Box sx={{ bgcolor: '#FF8333', py: 1.2, px: 0 }}>
                   <Button
-                    variant="contained"
+                    variant="text"
                     fullWidth
                     sx={{
-                      mt: 2,
-                      bgcolor: '#f47c20',
-                      '&:hover': { bgcolor: '#e65100' }
+                      color: 'white',
+                      fontWeight: 700,
+                      fontSize: 22,
+                      letterSpacing: 1,
+                      bgcolor: 'transparent',
+                      boxShadow: 'none',
+                      '&:hover': { bgcolor: '#e65100', color: 'white' },
+                      transition: 'background 0.2s',
+                      minHeight: 0,
+                      py: 0.5
                     }}
                     onClick={handleBookNow}
                   >
-                    Book Now
+                    BOOK NOW
                   </Button>
                 </Box>
-              </Container>
+              </Box>
+            </Container>
 
-              {/* Slider */}
-              <Grid item xs={12} md={6}>
-                {images.length > 0 && (
-                  <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: 2, p: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', height: 350 }}>
-                      {images.length > 1 && (
-                        <IconButton
-                          onClick={() => setSliderIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
-                          sx={{
-                            position: 'absolute',
-                            left: 16,
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            zIndex: 2,
-                            width: 48,
-                            height: 48,
-                            bgcolor: 'rgba(255,255,255,0.85)',
-                            border: '2px solid #e0e0e0',
-                            boxShadow: 1,
-                            color: '#1a365d',
-                            '&:hover': { bgcolor: '#f6e8d7' }
-                          }}
-                          aria-label="previous image"
-                        >
-                          <ArrowBackIosNewIcon fontSize="medium" />
-                        </IconButton>
-                      )}
-                      <img
-                        src={images[sliderIndex]?.url}
-                        alt={images[sliderIndex]?.alt}
-                        style={{ maxHeight: 320, maxWidth: '100%', objectFit: 'contain', borderRadius: 8 }}
-                      />
-                      {images.length > 1 && (
-                        <IconButton
-                          onClick={() => setSliderIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
-                          sx={{
-                            position: 'absolute',
-                            right: 16,
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            zIndex: 2,
-                            width: 48,
-                            height: 48,
-                            bgcolor: 'rgba(255,255,255,0.85)',
-                            border: '2px solid #e0e0e0',
-                            boxShadow: 1,
-                            color: '#1a365d',
-                            '&:hover': { bgcolor: '#f6e8d7' }
-                          }}
-                          aria-label="next image"
-                        >
-                          <ArrowForwardIosIcon fontSize="medium" />
-                        </IconButton>
-                      )}
-                    </Box>
-                    {/* Galería de miniaturas */}
+            {/* Slider */}
+            <Grid item xs={12} md={6}>
+              {images.length > 0 && (
+                <Box sx={{ position: 'relative', width: '100%', maxWidth: 600, mx: 'auto', overflow: 'hidden', borderRadius: 2, p: 2, mt: -12 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', height: 350 }}>
                     {images.length > 1 && (
-                      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 2 }}>
-                        {images.map((img, idx) => (
-                          <Box key={img.id} sx={{ position: 'relative' }}>
-                            <img
-                              src={img.url}
-                              alt={img.alt}
-                              style={{
-                                width: 60,
-                                height: 40,
-                                objectFit: 'cover',
-                                borderRadius: 4,
-                                border: idx === sliderIndex ? '2px solid #f47c20' : '2px solid #eee',
-                                cursor: 'pointer',
-                                opacity: idx === sliderIndex ? 1 : 0.7
-                              }}
-                              onClick={() => setSliderIndex(idx)}
-                            />
-                            {idx === sliderIndex && (
-                              <PhotoLibraryIcon sx={{ position: 'absolute', top: 2, right: 2, color: '#f47c20', fontSize: 18, bgcolor: 'white', borderRadius: '50%' }} />
-                            )}
-                          </Box>
-                        ))}
-                      </Box>
+                      <IconButton
+                        onClick={() => setSliderIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                        sx={{
+                          position: 'absolute',
+                          left: 16,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          zIndex: 2,
+                          width: 48,
+                          height: 48,
+                          bgcolor: 'rgba(255,255,255,0.85)',
+                          border: '2px solid #e0e0e0',
+                          boxShadow: 1,
+                          color: '#1a365d',
+                          '&:hover': { bgcolor: '#f6e8d7' }
+                        }}
+                        aria-label="previous image"
+                      >
+                        <ArrowBackIosNewIcon fontSize="medium" />
+                      </IconButton>
+                    )}
+                    <img
+                      src={images[sliderIndex]?.url}
+                      alt={images[sliderIndex]?.alt}
+                      style={{ maxHeight: 320, maxWidth: '100%', objectFit: 'contain', borderRadius: 8 }}
+                    />
+                    {images.length > 1 && (
+                      <IconButton
+                        onClick={() => setSliderIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                        sx={{
+                          position: 'absolute',
+                          right: 16,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          zIndex: 2,
+                          width: 48,
+                          height: 48,
+                          bgcolor: 'rgba(255,255,255,0.85)',
+                          border: '2px solid #e0e0e0',
+                          boxShadow: 1,
+                          color: '#1a365d',
+                          '&:hover': { bgcolor: '#f6e8d7' }
+                        }}
+                        aria-label="next image"
+                      >
+                        <ArrowForwardIosIcon fontSize="medium" />
+                      </IconButton>
                     )}
                   </Box>
-                )}
-              </Grid>
+                </Box>
+              )}
+            </Grid>
 
-            </Box>
-            <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img
-                src="/public/assets/icons/ferry1.svg"
-                alt="Boat"
-                style={{
-                  width: '100%',
-                  maxWidth: 500,
-                  borderRadius: 16,
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
-                  objectFit: 'cover'
-                }}
-              />
-            </Box>
           </Box>
+          <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img
+              src="/public/assets/icons/ferry1.svg"
+              alt="Boat"
+              style={{
+                width: '100%',
+                maxWidth: 700,
+                borderRadius: 16,
+                // boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
+                objectFit: 'cover'
+              }}
+            />
+          </Box>
+        </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
 
 
-            {/* Detalles */}
-            <Grid item xs={12} md={6}>
-              <Box sx={{ bgcolor: 'white', p: 4, borderRadius: 2 }}>
-                <Typography variant="h4" sx={{ mb: 3, color: '#1a365d' }}>Tour Overview</Typography>
+          {/* Detalles */}
+          <Grid item xs={12} md={6}>
+            <Box sx={{ bgcolor: '#06629B', padding: 4, margin: 0, border: 'none' }}>
+              <Typography variant="h3" sx={{ mb: 3, color: 'white' }}>Tour Overview</Typography>
 
-                {/* Detalles específicos del tour */}
-                <Grid container spacing={3} sx={{ mb: 4 }}>
-                  <Grid item xs={12} md={6}>
-                    <Box sx={{
-                      p: 2,
-                      bgcolor: '#f7fafc',
-                      borderRadius: 1,
-                      border: '1px solid #e2e8f0'
-                    }}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
-                        Duration
-                      </Typography>
-                      <Typography variant="body2">
-                        {tourData?.attributes?.duration || 'Contact for details'}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Box sx={{
-                      p: 2,
-                      bgcolor: '#f7fafc',
-                      borderRadius: 1,
-                      border: '1px solid #e2e8f0'
-                    }}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
-                        Group Size
-                      </Typography>
-                      <Typography variant="body2">
-                        {tourData?.attributes?.group_size || 'Contact for details'}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Box sx={{
-                      p: 2,
-                      bgcolor: '#f7fafc',
-                      borderRadius: 1,
-                      border: '1px solid #e2e8f0'
-                    }}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
-                        Description
-                      </Typography>
-                      <Typography variant="body2" sx={{ whiteSpace: 'pre-line' }}>
-                        {tourData?.attributes?.description}
-                      </Typography>
-                    </Box>
-                  </Grid>
+              {/* Detalles específicos del tour */}
+              <Grid container spacing={3} sx={{ mb: 4 }}>
+                <Grid item xs={12} md={6}>
+                  <Box sx={{
+                    p: 2,
+                    bgcolor: '#158a70',
+                    color: 'white',
+                    width: '300px',
+                    height: '100px'
+                  }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
+                      Duration
+                    </Typography>
+                    <Typography variant="body2">
+                      {tourData?.attributes?.duration || 'Contact for details'}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box sx={{
+                    p: 2,
+                    bgcolor: '#22b6b0',
+                    color: 'white',
+                    width: '300px',
+                    height: '100px'
+                  }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
+                      Group Size
+                    </Typography>
+                    <Typography variant="body2">
+                      {tourData?.attributes?.group_size || 'Contact for details'}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box sx={{
+                    p: 2,
+                    bgcolor: '#f47c20',
+                    color: 'white',
+                    width: '300px',
+                    height: '100px'
+                  }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
+                      Description
+                    </Typography>
+                    <Typography variant="body2" sx={{ whiteSpace: 'pre-line' }}>
+                      {tourData?.attributes?.description}
+                    </Typography>
+                  </Box>
+
                 </Grid>
 
-                {/* Párrafos y secciones del tour */}
-                {paragraphs.length > 0 && (
-                  <>
-                    <Divider sx={{ my: 4 }} />
-                    <Typography variant="h5" sx={{ mb: 3 }}>About This Tour</Typography>
-                    {paragraphs.map((paragraph, index) => (
-                      <Box
-                        key={index}
-                        sx={{
-                          mb: 4,
-                          p: 3,
-                          bgcolor: '#fff',
-                          borderRadius: 2,
-                          boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-                        }}
-                      >
-                        {paragraph.title && (
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              mb: 2,
-                              color: '#2c5282',
-                              fontWeight: 600
-                            }}
-                          >
-                            {paragraph.title}
-                          </Typography>
-                        )}
+              </Grid>
+              <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '200px' }}>
+                <Typography variant="h3" sx={{ mb: 3, color: 'white', width: '40%' }}>About This Tour</Typography>
+                <img src="/public/assets/icons/tiburon.svg" alt="Tiburon" style={{ width: '70%' }} />
+              </Box>
+
+            </Box>
+            {/* Párrafos y secciones del tour */}
+            <Box sx={{ bgcolor: '#22b6b0', p: 4 }}>
+
+              {paragraphs.length > 0 && (
+                <>
+                  {paragraphs.map((paragraph, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        mb: 4,
+                        p: 3,
+                        bgcolor: '#06629B',
+                        borderRadius: 2,
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      {paragraph.title && (
                         <Typography
-                          variant="body1"
+                          variant="h6"
                           sx={{
                             mb: 2,
-                            lineHeight: 1.8,
-                            color: '#2d3748'
-                          }}
-                          dangerouslySetInnerHTML={{ __html: paragraph.text || '' }}
-                        />
-                      </Box>
-                    ))}
-                  </>
-                )}
-
-                {/* Items incluidos */}
-                <Divider sx={{ my: 4 }} />
-                <Typography variant="h5" sx={{ mb: 3, color: '#1a365d' }}>What's Included</Typography>
-                <Grid container spacing={2}>
-                  {includedItems.length > 0 ? (
-                    includedItems.map((item) => (
-                      <Grid item xs={12} sm={6} key={item.id}>
-                        <Box
-                          sx={{
-                            p: 2,
-                            bgcolor: '#f7fafc',
-                            borderRadius: 2,
-                            border: '1px solid #e2e8f0',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column'
+                            color: 'white',
+                            fontWeight: 600
                           }}
                         >
+                          {paragraph.title}
+                        </Typography>
+                      )}
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          mb: 2,
+                          lineHeight: 1.8,
+                          color: 'white'
+                        }}
+                        dangerouslySetInnerHTML={{ __html: paragraph.text || '' }}
+                      />
+                    </Box>
+                  ))}
+                </>
+              )}
+
+            </Box>
+            <Box sx={{ 
+                bgcolor: '#00B3C6', 
+                p: 4, 
+                color: 'white'
+              }}>
+                <Typography variant="h4" sx={{ 
+                  mb: 4, 
+                  color: 'white',
+                  fontWeight: 'bold',
+                  textAlign: 'center'
+                }}>
+                  WHAT'S INCLUDED
+                </Typography>
+                <Grid container direction="row" spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+                  {includedItems.length > 0 ? (
+                    includedItems.map((item) => (
+                      <Grid item sx={{ width: { xs: '100%', sm: '50%', md: '33%', lg: '25%' }, p: 1 }} key={item.id}>
+                        <Box
+                          sx={{
+                            p: 3,
+                            bgcolor: '#06629B',
+                            borderRadius: 2,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            height: '300px',
+                            justifyContent: 'center',
+                            position: 'relative',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              transform: 'translateY(-5px)',
+                              boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+                            },
+                            '&:hover img': {
+                              transform: 'scale(1.15)'
+                            }
+                          }}
+                        >
+                          <Box 
+                            sx={{
+                              position: 'relative',
+                              width: '100%',
+                              height: '200px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              '&:hover .tooltip': {
+                                opacity: 1,
+                                visibility: 'visible',
+                                transform: 'translateX(-50%) translateY(0)'
+                              }
+                            }}
+                          >
+                            <img 
+                              src={`/public/assets/tours/${
+                                item.title.toLowerCase().includes('almuerzo') ? 'VECTOR ALMUERZO.svg' :
+                                item.title.toLowerCase().includes('toalla') ? 'VECTOR TOALLA.svg' :
+                                item.title.toLowerCase().includes('snack') ? 'VECTOR SNAKS.svg' :
+                                item.title.toLowerCase().includes('agua') ? 'VECTOR AGUA.svg' :
+                                item.title.toLowerCase().includes('embarcacion') ? 'VECTOR EMBARQUE.svg' :
+                                item.title.toLowerCase().includes('ferry') ? 'VECTOR FERRY3.svg' :
+                                item.title.toLowerCase().includes('traje') ? 'VECTOR TRAJE.svg' :
+                                'VECTOR AGUA.svg'
+                              }`}
+                              alt={item.title}
+                              style={{ 
+                                width: '180px', 
+                                height: '180px',
+                                objectFit: 'contain',
+                                transform: 'scale(1.3)',
+                                transition: 'all 0.3s ease'
+                              }}
+                            />
+                            {item.description && (
+                              <Box
+                                className="tooltip"
+                                sx={{
+                                  position: 'absolute',
+                                  bottom: '120%', // Posiciona el tooltip justo encima de la card
+                                  left: '50%',
+                                  transform: 'translateX(-50%)',
+                                  backgroundColor: '#f47c20',
+                                  color: 'white',
+                                  padding: '15px 20px',
+                                  borderRadius: '12px',
+                                  fontSize: '1rem',
+                                  maxWidth: '300px',
+                                  width: 'max-content',
+                                  textAlign: 'center',
+                                  zIndex: 9999, // Z-index más alto para asegurar que esté por encima de todo
+                                  opacity: 0,
+                                  visibility: 'hidden',
+                                  transition: 'all 0.4s ease',
+                                  boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+                                  fontWeight: '500',
+                                  letterSpacing: '0.5px',
+                                  '&::after': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    top: '98%',
+                                    left: '50%',
+                                    marginLeft: '-8px',
+                                    borderWidth: '8px',
+                                    borderStyle: 'solid',
+                                    borderColor: '#f47c20 transparent transparent transparent'
+                                  }
+                                }}
+                              >
+                                {item.description}
+                              </Box>
+                            )}
+                          </Box>
                           <Typography
                             variant="h6"
                             sx={{
-                              mb: 1,
-                              color: '#2c5282',
-                              fontWeight: 600,
-                              fontSize: '1.1rem'
+                              color: 'white',
+                              fontWeight: 'bold',
+                              fontSize: '1rem',
+                              textTransform: 'uppercase',
+                              mb: item.description ? 2 : 0
                             }}
                           >
                             {item.title}
                           </Typography>
-                          {item.description && (
-                            <Typography
-                              variant="body2"
+                          <Box
                               sx={{
-                                color: '#4a5568',
-                                flex: 1
+                                position: 'relative',
+                                '&:hover .tooltip': {
+                                  opacity: 1,
+                                  visibility: 'visible',
+                                  transform: 'translateY(0)'
+                                }
                               }}
                             >
-                              {item.description}
-                            </Typography>
-                          )}
+                              {item.description && (
+                                <Box
+                                  className="tooltip"
+                                  sx={{
+                                    position: 'absolute',
+                                    bottom: '100%',
+                                    left: '50%',
+                                    transform: 'translateX(-50%) translateY(10px)',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                                    color: 'white',
+                                    padding: '10px 15px',
+                                    borderRadius: '8px',
+                                    fontSize: '0.85rem',
+                                    maxWidth: '250px',
+                                    textAlign: 'center',
+                                    zIndex: 1000,
+                                    opacity: 0,
+                                    visibility: 'hidden',
+                                    transition: 'all 0.3s ease',
+                                    '&::after': {
+                                      content: '""',
+                                      position: 'absolute',
+                                      top: '100%',
+                                      left: '50%',
+                                      marginLeft: '-5px',
+                                      borderWidth: '5px',
+                                      borderStyle: 'solid',
+                                      borderColor: 'rgba(0, 0, 0, 0.9) transparent transparent transparent'
+                                    }
+                                  }}
+                                >
+                                  {item.description}
+                                </Box>
+                              )}
+                            </Box>
                         </Box>
                       </Grid>
                     ))
@@ -480,9 +641,9 @@ export function TourDetails() {
                   )}
                 </Grid>
               </Box>
-            </Grid>
-          </Box>
-        </Container>
+          </Grid>
+        </Box>
+
 
         {/* Paquetes del tour */}
         {packages.length > 0 && (
