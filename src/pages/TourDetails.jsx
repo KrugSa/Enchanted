@@ -411,9 +411,73 @@ export function TourDetails() {
                 </Grid>
 
               </Grid>
-              <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '200px' }}>
-                <Typography variant="h3" sx={{ mb: 3, color: 'white', width: '40%' }}>About This Tour</Typography>
-                <img src="/public/assets/icons/tiburon.svg" alt="Tiburon" style={{ width: '70%' }} />
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  width: '100%', 
+                  height: '400px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+              >
+                <Box
+                  sx={{
+                    position: 'relative',
+                    zIndex: 2,
+                    pl: 4,
+                    width: '30%'
+                  }}
+                >
+                  <Typography 
+                    variant="h3" 
+                    sx={{ 
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: { xs: '2rem', md: '2rem' },
+                      lineHeight: 1.2,
+                      mb: 2
+                    }}
+                  >
+                    About This Tour
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      color: 'white',
+                      opacity: 0.9,
+                      fontSize: '1.1rem'
+                    }}
+                  >
+                    About this trip
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    right: '-30%',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: '90%',
+                    height: '140%',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                    overflow: 'visible'
+                  }}
+                >
+                  <img 
+                    src="/public/assets/icons/tiburon.svg" 
+                    alt="Tiburon" 
+                    style={{ 
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      transform: 'scale(1.5) translateX(5%)',
+                      transformOrigin: 'center right'
+                    }} 
+                  />
+                </Box>
               </Box>
 
             </Box>
@@ -646,7 +710,7 @@ export function TourDetails() {
 
 
         {/* Paquetes del tour */}
-        {packages.length > 0 && (
+        {/* {packages.length > 0 && (
           <Container maxWidth="lg" sx={{ mb: 8 }}>
             <Box sx={{ bgcolor: 'white', p: 4, borderRadius: 2, boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
               <Typography variant="h5" sx={{ mb: 3, color: '#1a365d' }}>Available Packages</Typography>
@@ -730,7 +794,7 @@ export function TourDetails() {
               </Grid>
             </Box>
           </Container>
-        )}
+        )} */}
 
         {/* Book section */}
 
